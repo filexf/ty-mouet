@@ -72,6 +72,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "ty_mouet_production"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { host: 'ty-mouet-c5897a5b74b0' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
