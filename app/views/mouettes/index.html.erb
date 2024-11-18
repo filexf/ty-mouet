@@ -1,0 +1,7 @@
+<h1>toutes les mouettes</h1>
+<ul>
+
+<% @mouettes.each do |mouette| %>
+<li><%= link_to mouette.name, mouette_path(mouette)%></li>
+<% end %>
+</ul>
