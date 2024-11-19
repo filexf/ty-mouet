@@ -1,8 +1,19 @@
 <h1> <%= @mouette.name %> </h1>
 <div class="btn btn-info"><%= link_to "Retour à la liste des mouettes", root_path %></div>
 
-<%= simple_form_for [@mouette, @booking] do |f| %>
-  <%= f.input :start_date, as: :date %>
-  <%= f.input :end_date, as: :date %>
-  <%= f.button :submit, class:"btn btn-primary" %>
+<% if current_user %>
+  <% if current_user != @mouette.owner %>
+    <%= simple_form_for [@mouette, @booking] do |f| %>
+      <%= f.input :start_date, as: :date %>
+      <%= f.input :end_date, as: :date %>
+      <%= f.button :submit, class:"btn btn-primary" %>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+  <button class="btn btn-primary">Sign in</button>
+  <% end %>
+  <%= link_to new_user_registration_path do %>
+  <button class="btn btn-secondary">Sign up</button>
+ <% end %>
 <% end %>
