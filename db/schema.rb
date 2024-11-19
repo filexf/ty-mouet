@@ -21,7 +21,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_102620) do
     t.bigint "mouette_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "renter_id"
     t.index ["mouette_id"], name: "index_bookings_on_mouette_id"
+    t.index ["renter_id"], name: "index_bookings_on_renter_id"
   end
 
   create_table "mouettes", force: :cascade do |t|
@@ -55,4 +57,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_102620) do
 
   add_foreign_key "bookings", "mouettes"
   add_foreign_key "mouettes", "users", column: "owner_id"
+  add_foreign_key "bookings", "users", column: "renter_id"
+
 end
