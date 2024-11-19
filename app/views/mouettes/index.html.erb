@@ -1,8 +1,1 @@
-<h1>toutes les mouettes</h1>
-<ul>
-
-<% @mouettes.each do |mouette| %>
-<li><%= link_to mouette.name, mouette_path(mouette)%></li>
-<li><%= cl_image_tag mouette.photo.key, height: 300, crop: :fill %></li>
-<% end %>
-</ul>
+  <h1 class="mt-3 d-flex justify-content-center"><strong>Toutes les mouettes</strong></h1>
