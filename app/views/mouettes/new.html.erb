@@ -1,13 +1,18 @@
-<h1>Créer votre nouvelle mouette</h1>
+<div class="container">
 
-<%= simple_form_for @mouette do |f| %>
-  <%= f.input :name %>
-  <%= f.input :availability %>
-  <%= f.input :rating %>
-  <%= f.input :latitude %>
-  <%= f.input :longitude %>
-  <%= f.input :accessories %>
-  <%= f.input :price %>
-  <%= f.input :description %>
-  <%= f.button :submit, class: "btn btn-info" %>
-<% end %>
+
+  <h1>Créer votre nouvelle mouette</h1>
+
+  <%= simple_form_for @mouette do |f| %>
+    <%= f.input :name %>
+    <%= f.input :availability %>
+    <%= f.input :rating %>
+    <%= f.input :latitude %>
+    <%= f.input :longitude %>
+    <%= f.input :accessories %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.button :submit, class: "btn btn-info" %>
+  <% end %>
+
+</div>
