@@ -19,11 +19,11 @@ class BookingsController < ApplicationController
   end
 
   def owner_bookings
-    @bookings = Booking.where(mouette: {owner: current_user})
+    @bookings = current_user.bookings_as_owner
   end
 
   def renter_bookings
-    @bookings = Booking.where(renter: current_user)
+    @bookings = current_user.bookings
   end
 
   private

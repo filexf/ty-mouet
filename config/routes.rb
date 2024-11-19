@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   resources :mouettes, only: %i[show mine create new] do
     resources :bookings, only: [:create]
   end
+  get "/bookings/owner/:id", to: "bookings#owner_bookings"
+  get "/bookings/renter/:id", to: "bookings#renter_bookings"
 
-  resources :bookings, only: [:show, :owner_bookings, :renter_bookings]
-
+  resources :bookings, only: [:show]
 end
