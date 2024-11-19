@@ -42,6 +42,16 @@ class MouettesController < ApplicationController
   end
 
   def mouette_params
-    params.require(:mouette).permit(:name, :availability, :rating, :latitude, :longitude, :accessories, :description, :price)
+    params.require(:mouette).permit(
+      :name,
+      :availability,
+      :rating,
+      :latitude,
+      :longitude,
+      :accessories,
+      :description,
+      :price,
+      :photo
+    )
   end
 end

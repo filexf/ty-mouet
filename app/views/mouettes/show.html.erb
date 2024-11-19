@@ -1,6 +1,8 @@
 <h1> <%= @mouette.name %> </h1>
 <div class="btn btn-info"><%= link_to "Retour à la liste des mouettes", root_path %></div>
 
+<p> <%= cl_image_tag @mouette.photo.key, height: 300, crop: :fill %> </p>
+
 <% if current_user %>
   <% if current_user != @mouette.owner %>
     <%= simple_form_for [@mouette, @booking] do |f| %>
