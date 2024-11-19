@@ -1,0 +1,28 @@
+<h1> Ma location de mouette : </h1>
+
+<ul>
+  <li>
+    Status <%= @booking.status %>
+  </li>
+  <li>
+    Start date <%= @booking.start_date %>
+  </li>
+  <li>
+    End date <%= @booking.end_date %>
+  </li>
+  <li>
+    Ma mouette <%= @booking.mouette.name %>
+  </li>
+  <li>
+    Prix <%= @booking.mouette.price %> * nombre de jours
+  </li>
+  <li>
+    Propriétaire <%= @booking.mouette.owner.first_name%> <%= @booking.mouette.owner.last_name%>
+  </li>
+  <li>
+    Locataire <%= @booking.renter.first_name%> <%= @booking.renter.last_name%>
+  </li>
+  <li>
+    Description <%= @booking.mouette.description%>
+  </li>
+</ul>

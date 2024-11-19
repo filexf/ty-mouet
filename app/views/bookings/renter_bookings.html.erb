@@ -1,0 +1,12 @@
+<h1> Mes locations de mouettes </h1>
+
+<div>
+  <% @bookings.each do |booking| %>
+  <div>
+    Mouette louée : <%= booking.mouette.name %>
+    Start date : <%= booking.start_date %>
+    End date : <%= booking.end_date %>
+    Propriétaire : <%= booking.mouette.owner.first_name %> <%= booking.mouette.owner.last_name %>
+  </div>
+  <% end %>
+</div>

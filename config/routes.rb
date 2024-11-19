@@ -10,5 +10,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "mouettes#index"
 
-  resources :mouettes, only: %i[show mine create new]
+  resources :mouettes, only: %i[show mine create new] do
+    resources :bookings, only: [:create]
+  end
+
+  resources :bookings, only: [:show, :owner_bookings, :renter_bookings]
+
 end

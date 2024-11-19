@@ -1,11 +1,14 @@
 class MouettesController < ApplicationController
   before_action :set_mouette, only: [:show]
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
     @mouettes = Mouette.all
   end
 
   def show
+    @booking = Booking.new
   end
 
   def mine
@@ -20,10 +23,15 @@ class MouettesController < ApplicationController
 
   def create
     @mouette = Mouette.new(mouette_params)
+    @mouette.owner = current_user
     if @mouette.save
-      redirect_to mouette_path(@mouette)
-    else
-      render :new, status: :unprocessable_entity
+      if current_user == @mouette.owner
+        flash[:notice] = "Mouette successfully created"
+        redirect_to mouette_path(@mouette)
+      else
+        flash[:alert] = "You are not the owner of this mouette"
+        render :new, status: :unprocessable_entity
+      end
     end
   end
 
@@ -34,6 +42,16 @@ class MouettesController < ApplicationController
   end
 
   def mouette_params
-    params.require(:mouette).permit(:name, :availability, :rating, :latitude, :longitude, :accessories, :description, :price)
+    params.require(:mouette).permit(
+      :name,
+      :availability,
+      :rating,
+      :latitude,
+      :longitude,
+      :accessories,
+      :description,
+      :price,
+      :photo
+    )
   end
 end
