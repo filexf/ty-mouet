@@ -56,7 +56,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_19_102620) do
   end
 
   add_foreign_key "bookings", "mouettes"
-  add_foreign_key "mouettes", "users", column: "owner_id"
   add_foreign_key "bookings", "users", column: "renter_id"
-
+  add_foreign_key "mouettes", "users", column: "owner_id"
 end
