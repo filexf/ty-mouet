@@ -9,9 +9,9 @@ class MouettesController < ApplicationController
   end
 
   def mine
-    # @mouettes = Mouette.all
-    # Mouette.owner_id = @owner_id
-    # @mouette = @mouettes.find(params[@owner_id])
+    @mouettes = Mouette.all
+    Mouette.owner_id = @owner_id
+    @mouette = @mouettes.find(params[@owner_id])
   end
 
   def new
