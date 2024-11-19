@@ -1,2 +1,8 @@
 <h1> <%= @mouette.name %> </h1>
 <div class="btn btn-info"><%= link_to "Retour à la liste des mouettes", root_path %></div>
+
+<%= simple_form_for [@mouette, @booking] do |f| %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.button :submit, class:"btn btn-primary" %>
+<% end %>
