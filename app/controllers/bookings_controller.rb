@@ -8,12 +8,12 @@ class BookingsController < ApplicationController
     @mouette = Mouette.find(params[:mouette_id])
     @booking = Booking.new(booking_params)
     @booking.renter = current_user
+    # à mettre à jour une fois Devise terminé
     @booking.mouette = @mouette
+
     if @booking.save
       redirect_to booking_path(@booking)
     else
-      # doit rendre le formulaire à nouveau mais complété
-      # donc la show de mouette : comment faire ?
       render "mouettes/show", status: :unprocessable_entity
     end
   end
