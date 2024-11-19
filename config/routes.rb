@@ -14,6 +14,6 @@ Rails.application.routes.draw do
     resources :bookings, only: [:create]
   end
 
-  resources :bookings, only: [:show, :owner_bookings]
+  resources :bookings, only: [:show, :owner_bookings, :renter_bookings]
 
 end
