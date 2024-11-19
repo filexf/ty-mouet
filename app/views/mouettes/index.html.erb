@@ -3,5 +3,6 @@
 
 <% @mouettes.each do |mouette| %>
 <li><%= link_to mouette.name, mouette_path(mouette)%></li>
+<li><%= cl_image_tag mouette.photo.key, height: 300, crop: :fill %></li>
 <% end %>
 </ul>

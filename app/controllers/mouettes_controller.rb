@@ -20,6 +20,7 @@ class MouettesController < ApplicationController
 
   def create
     @mouette = Mouette.new(mouette_params)
+    @mouette.owner = current_user
     if @mouette.save
       redirect_to mouette_path(@mouette)
     else
@@ -34,6 +35,16 @@ class MouettesController < ApplicationController
   end
 
   def mouette_params
-    params.require(:mouette).permit(:name, :availability, :rating, :latitude, :longitude, :accessories, :description, :price)
+    params.require(:mouette).permit(
+      :name,
+      :availability,
+      :rating,
+      :latitude,
+      :longitude,
+      :accessories,
+      :description,
+      :price,
+      :photo
+    )
   end
 end
