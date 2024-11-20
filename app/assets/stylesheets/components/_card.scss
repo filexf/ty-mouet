@@ -38,12 +38,16 @@
   object-fit: contain;
 }
 
+.cards-new-form{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
 
 .booking-infos p{
   width: fit-content;
   height: fit-content;
 }
-
 
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
