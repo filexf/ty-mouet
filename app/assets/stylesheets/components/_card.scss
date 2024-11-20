@@ -32,6 +32,12 @@
   right: 5px;
 }
 
+.card-img-top{
+  width: 400px;
+  height: 250px;
+  object-fit: contain;
+}
+
 // Smallest device
 @media (min-width: 100px) and (max-width: 575px) {
   // .cards {
