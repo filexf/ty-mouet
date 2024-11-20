@@ -1,15 +1,10 @@
-<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-
-
-      <div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar fixed-top navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
 
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "https://cdn-icons-png.flaticon.com/512/5052/5052478.png" %>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -20,29 +15,34 @@
             <li class="nav-item active">
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
-            <%# <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> %>
-              <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-            <%# </a> %>
-              <%# <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown"> %>
-                <%# <%= link_to "Action", "#", class: "dropdown-item" %>
-                <%# <%= link_to "Another action", "#", class: "dropdown-item" %>
-                <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-              </div>
-            <%# </li> %>
+            <li class="nav-item dropdown">
+              <%= image_tag "https://thumbs.dreamstime.com/b/close-up-photo-screaming-white-seagull-black-background-291309691.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown nav-link" %>
+                </div>
+            </li>
           <% else %>
             <li class="nav-item active">
               <%= link_to "Home", root_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            <li class="nav-item dropdown">
+              <%= image_tag "https://thumbs.dreamstime.com/b/close-up-photo-screaming-white-seagull-black-background-291309691.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <%= link_to "Login", new_user_session_path, class: "dropdown nav-link" %>
+                </div>
             </li>
           <% end %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://thumbs.dreamstime.com/b/close-up-photo-screaming-white-seagull-black-background-291309691.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-
-          </li>
         </ul>
         </div>
       </div>
     </div>
+
+
+<%# Improve behavior here to only display the alert when needed %>
+<div class="flash flash-success alert alert-dismissible fade show" role="alert">
+  <span class="notice me-3"><%= notice %></span>
+  <span class="alert me-3"><%= alert %></span>
+  <a data-bs-dismiss="alert" aria-label="Close">
+    <i class="fas fa-times"></i>
+  </a>
+</div>
