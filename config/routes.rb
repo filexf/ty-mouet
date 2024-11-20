@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get "/bookings/renter/:id", to: "bookings#renter_bookings", as: "renter_bookings"
 
   resources :bookings, only: [:show]
-  patch "/bookings/owner/:id", to: "bookings#accept", as: "accept_booking"
-  patch "/bookings/owner/:id", to: "bookings#reject", as: "reject_booking"
+  patch "/bookings/owner/:id/accept", to: "bookings#accept", as: "accept_booking"
+  patch "/bookings/owner/:id/reject", to: "bookings#reject", as: "reject_booking"
 end
