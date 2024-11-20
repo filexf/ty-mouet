@@ -26,6 +26,20 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def reject
+    # raise
+    @booking = Booking.find(params[:id])
+    @booking.rejected!
+    redirect_to owner_bookings_path(current_user), notice: "Réservation rejected avec succès."
+  end
+
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.accepted!
+    # raise
+    redirect_to owner_bookings_path(current_user), notice: "Réservation accepted avec succès."
+  end
+
   private
 
   def booking_params
