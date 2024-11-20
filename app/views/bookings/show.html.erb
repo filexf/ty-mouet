@@ -1,31 +1,38 @@
-<div class="container d-flex justify-content-center">
-  <h1> Ma location de mouette : </h1>
+<div class="container">
+  <div class="d-flex justify-content-center flex-column">
+    <div class="title text-center m-2">
+    <h1> Ma location de mouette :
+      <p class="fw-semibold"><%= @booking.mouette.name %></p>  </h1>
+    </div>
+    <div class="booking-body text-center d-flex flex-column justify-content-center align-items-center">
 
-  <ul>
-    <li>
-      Status <%= @booking.status %>
-    </li>
-    <li>
-      Start date <%= @booking.start_date %>
-    </li>
-    <li>
-      End date <%= @booking.end_date %>
-    </li>
-    <li>
-      Ma mouette <%= @booking.mouette.name %>
-    </li>
-    <li>
-      Prix <%= @booking.mouette.price %> * nombre de jours
-    </li>
-    <li>
-      Propriétaire <%= @booking.mouette.owner.first_name%> <%= @booking.mouette.owner.last_name%>
-    </li>
-    <li>
-      Locataire <%= @booking.renter.first_name%> <%= @booking.renter.last_name%>
-    </li>
-    <li>
-      Description <%= @booking.mouette.description%>
-    </li>
-  </ul>
+      <%=@mouette.photo%>
+      <div class="row my-5">
+        <div class="booking-infos col-12 col-sm-6">
+        <h2>Statut : <%= @booking.status %></h2>
+        <p>Du <%= @booking.start_date.strftime('%d-%m-%Y') %> au <%= @booking.end_date.strftime('%d-%m-%Y') %></p>
+        </div>
 
+        <div class="price col-12 col-sm-6 shadow-sm p-3 bg-body-tertiary rounded">
+          <p><%= @booking.mouette.price %> €</p>
+          <% days = @booking.end_date - @booking.start_date %>
+          <% number_of_days = days.to_i %>
+          <p><%= number_of_days %> jours</p>
+          <p class="fw-semibold">Total : <%= @booking.mouette.price * days %> €</p>
+        </div>
+      </div>
+
+      <h3 class="border-bottom border-primary-subtle mb-3">En savoir + sur <%= @booking.mouette.name %> :</h3>
+      <p class="fst-italic">
+      Propriétaire : <%= @booking.mouette.owner.first_name%> <%= @booking.mouette.owner.last_name%>
+      </p>
+      <p class="fst-italic">
+      Locataire : <%= @booking.renter.first_name%> <%= @booking.renter.last_name%>
+      </p>
+      <p class="border shadow-sm p-3 mb-5 bg-body-tertiary rounded">
+      Description : <%= @booking.mouette.description%>
+      </p>
+    </div>
+
+  </div>
 </div>

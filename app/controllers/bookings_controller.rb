@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
 
   def show
     @booking = Booking.find(params[:id])
+    @mouette = @booking.mouette
   end
 
   def create
