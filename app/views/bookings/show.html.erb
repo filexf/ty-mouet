@@ -11,9 +11,9 @@
 
             <%# "waiting","accepted","rejected %>
               <p>
-                <% if @booking.status == "rejected"%>
+                <% if @booking.rejected? %>
                   <h2 class="text-bg-danger text-center p-3 fs-3">Réservamouette rejetée</h2>
-                  <% elsif @booking.status == "accepted" %>
+                  <% elsif @booking.accepted? %>
                   <h2 class="text-bg-success p-3">Réservamouette acceptée</h2>
                   <% else %>
                   <h2 class="text-bg-info p-3">Réservamouette en attente</h2>
