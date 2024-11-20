@@ -1,6 +1,6 @@
-<div class="container d-flex flex-column m-6">
+<div class="container d-flex flex-column mb-6">
 
-  <h1 class="my-5">Créer votre nouvelle mouette</h1>
+  <h1 class="my-5 d-flex justify-content-center"> <strong >Créez votre nouvelle mouette </strong> </h1>
 
 
 
@@ -16,7 +16,10 @@
         <%= f.input :price %>
         <%= f.input :description %>
         <%= f.input :photo, as: :file %>
-        <%= f.button :submit, class: "btn btn-info d-flex justify-content-center align-items-center m-4 col-5" %>
+        <div class="d-flex justify-content-center mt-2">
+
+          <%= f.button :submit, class: "btn btn-outline-primary d-flex justify-content-center align-items-center m-4 col-6" %>
+        </div>
       </div>
 
 
