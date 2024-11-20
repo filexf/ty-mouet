@@ -42,10 +42,12 @@
 
 
 <%# Improve behavior here to only display the alert when needed %>
-<div class="flash flash-success alert alert-dismissible fade show" role="alert">
-  <span class="notice me-3"><%= notice %></span>
-  <span class="alert me-3"><%= alert %></span>
-  <a data-bs-dismiss="alert" aria-label="Close">
-    <i class="fas fa-times"></i>
-  </a>
-</div>
+<% if notice || alert %>
+  <div class="flash flash-success alert alert-dismissible fade show" role="alert">
+    <span class="notice me-3"><%= notice %></span>
+    <span class="alert me-3"><%= alert %></span>
+    <button type="button" data-bs-dismiss="alert" aria-label="Close">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+<% end %>
