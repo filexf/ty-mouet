@@ -5,24 +5,37 @@
       <p class="fw-semibold"><%= @booking.mouette.name %></p>  </h1>
     </div>
     <div class="booking-body text-center d-flex flex-column justify-content-center align-items-center">
+        <div class="row">
+          <div class="my-5 gap-3 d-flex justify-content-center align-items-center">
+            <div class="booking-infos d-flex flex-column justify-content-center align-items-center">
 
-      <%=@mouette.photo%>
-      <div class="row my-5">
-        <div class="booking-infos col-12 col-sm-6">
-        <h2>Statut : <%= @booking.status %></h2>
-        <p>Du <%= @booking.start_date.strftime('%d-%m-%Y') %> au <%= @booking.end_date.strftime('%d-%m-%Y') %></p>
-        </div>
+            <%# "waiting","accepted","rejected %>
+              <p>
+                <% if @booking.status == "rejected"%>
+                  <h2 class="text-bg-danger text-center p-3 fs-3">Réservamouette rejetée</h2>
+                  <% elsif @booking.status == "accepted" %>
+                  <h2 class="text-bg-success p-3">Réservamouette acceptée</h2>
+                  <% else %>
+                  <h2 class="text-bg-info p-3">Réservamouette en attente</h2>
+                <% end %>
+                </p>
+              <p class="text-center">Du <%= @booking.start_date.strftime('%d-%m-%Y') %> au <%= @booking.end_date.strftime('%d-%m-%Y') %></p>
+            </div>
 
-        <div class="price col-12 col-sm-6 shadow-sm p-3 bg-body-tertiary rounded">
-          <p><%= @booking.mouette.price %> €</p>
-          <% days = @booking.end_date - @booking.start_date %>
-          <% number_of_days = days.to_i %>
-          <p><%= number_of_days %> jours</p>
-          <p class="fw-semibold">Total : <%= @booking.mouette.price * days %> €</p>
+          <div class="price shadow-sm p-3 bg-body-tertiary rounded">
+            <p><%= @booking.mouette.price %> €</p>
+            <% days = @booking.end_date - @booking.start_date %>
+            <% number_of_days = days.to_i %>
+            <p><%= number_of_days %> jours</p>
+            <p class="fw-semibold">Total : <%= @booking.mouette.price * days %> €</p>
+          </div>
         </div>
       </div>
+      <div class="image_tag col-12 col-sm-6 rounded mx-auto img-thumbnail">
+        <%=cl_image_tag @mouette.photo.key, class:"img-fluid"%>
+      </div>
 
-      <h3 class="border-bottom border-primary-subtle mb-3">En savoir + sur <%= @booking.mouette.name %> :</h3>
+      <h3 class="border-bottom border-primary-subtle my-3">En savoir + sur <%= @booking.mouette.name %> :</h3>
       <p class="fst-italic">
       Propriétaire : <%= @booking.mouette.owner.first_name%> <%= @booking.mouette.owner.last_name%>
       </p>
