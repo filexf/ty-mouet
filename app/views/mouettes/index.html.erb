@@ -1,18 +1,33 @@
-<h1 class="my-5 d-flex justify-content-center"><strong>Trouvez les mouettes de votre région</strong></h1>
 
-<div class="container ">
-  <div class="cards">
-    <% @mouettes.each do |mouette|  %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path mouette.photo.key, crop: :fill %>')">
-        <%= link_to mouette.name, mouette_path(mouette), class: "text-decoration-none text-light" %>
-      </div>
-    <% end %>
+  <div class="rounded img-fluid m-0 img-banner d-flex justify-content-center">
+    <img src="https://images.unsplash.com/photo-1519929436393-fe843baf2cec?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="femme qui nourrit une mouette">
   </div>
+<div class="container d-flex flex-column justify-content-center space-between ">
+
+  <h1 class="my-5 text-center"><strong>Trouvez les mouettes de votre région</strong></h1>
+
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="row d-flex justify-content-around">
+
+      <% @mouettes.each do |mouette|  %>
+        <div class="card col-12 col-sm-3 m-2">
+          <div class="card-img">
+          <img src="<%= cl_image_path mouette.photo.key, crop: :fill %>" alt="<%mouette.name%> the seagull" class="card-img-top">
+          </div>
+          <p><%= mouette.rating %> ⭐️</p>
+            <div class="card-body">
+            <div class="card-price">
+              <p><%=mouette.price%> €</p>
+            </div>
+              <h5 class="card-title"><%= link_to mouette.name, mouette_path(mouette), class: "text-decoration-none text-reset" %></h5>
+              <p class="card-text"><small class="text-body-secondary"><%=mouette.availability%></small></p>
+            </div>
+        </div>
+      <% end %>
+      </div>
+    </div>
+
 </div>
-
-<div class = "d-flex justify-content-center">
-
-  <%= link_to "Ajoutez une mouette!", new_mouette_path, class: "btn btn-primary d-flex justify-content-center my-3 col-2" %>
+<div>
+    <%= link_to "Ajoutez une mouette!", new_mouette_path, class: "btn btn-info btn-lg my-3 col-2" %>
 </div>
-
-<%# <img src="https://images.pexels.com/photos/56618/seagull-sky-holiday-bird-56618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt=""> %>
