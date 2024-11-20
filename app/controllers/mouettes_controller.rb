@@ -25,13 +25,10 @@ class MouettesController < ApplicationController
     @mouette = Mouette.new(mouette_params)
     @mouette.owner = current_user
     if @mouette.save
-      if current_user == @mouette.owner
-        flash[:notice] = "Mouette successfully created"
-        redirect_to mouette_path(@mouette)
-      else
-        flash[:alert] = "You are not the owner of this mouette"
-        render :new, status: :unprocessable_entity
-      end
+      flash[:notice] = "Mouette successfully created"
+      redirect_to mouette_path(@mouette)
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
