@@ -32,7 +32,6 @@ end
 # 2. Create the instances 🏗️
 puts "Creating mouettes..."
 
-
 mouettes_descriptions = [
   "Une mouette blanche qui plane majestueusement dans le ciel bleu.",
   "La mouette au bec jaune qui se pose souvent près de l'eau.",
