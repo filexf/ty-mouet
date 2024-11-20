@@ -1,5 +1,6 @@
-<h1> Mes locations de mouettes </h1>
-
+<div class="container">
+  <h1> Mes locations de mouettes </h1>
+<br><br><br><br><br><br><br>
 <div>
   <% @bookings.each do |booking| %>
   <div>
@@ -9,4 +10,5 @@
     Propriétaire : <%= booking.mouette.owner.first_name %> <%= booking.mouette.owner.last_name %>
   </div>
   <% end %>
+</div>
 </div>

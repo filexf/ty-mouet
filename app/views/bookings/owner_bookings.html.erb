@@ -1,12 +1,20 @@
+<div class="container">
 <h1> Mes locations de mouettes </h1>
 
-<div>
-  <% @bookings.each do |booking| %>
-  <div>
-    Mouette louée : <%= booking.mouette.name %>
-    Start date : <%= booking.start_date %>
-    End date : <%= booking.end_date %>
-    Locataire : <%= booking.renter.first_name %> <%= booking.renter.last_name %>
+<div class="d-flex justify-content-center align-items-center">
+      <div class="row d-flex justify-content-around">
+        <% @bookings.each do |booking| %>
+          <div class="card col-12 col-sm-3 m-2">
+              <div class="card-img">
+                  <%= cl_image_tag booking.mouette.photo.key, height: 300, crop: :fill %>
+              </div>
+            <h5 class="card-title">
+              Mouette louée : <%= booking.mouette.name %>
+            </h5>
+            From: <%= booking.start_date %> to <%= booking.end_date %>
+            Renter: <%= booking.renter.first_name %> <%= booking.renter.last_name %>
+          </div>
+        <% end %>
+    </div>
   </div>
-  <% end %>
 </div>
