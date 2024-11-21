@@ -1,18 +1,12 @@
-<div class="container">
-  <h1 class="d-flex justify-content-center mt-5"> Mes locations de mouettes </h1>
-<br><br><br><br><br><br><br>
-<div>
-  <% @bookings.each do |booking| %>
-  <div>
-    Mouette louée : <%= booking.mouette.name %>
-    Start date : <%= booking.start_date %>
-    End date : <%= booking.end_date %>
-    Propriétaire : <%= booking.mouette.owner.first_name %> <%= booking.mouette.owner.last_name %>
+<div class="container d-flex flex-column justify-content-center space-between ">
+  <h1 id="index-title" class="my-5 text-center"><strong>Vos demandes de mouettes</strong></h1>
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center mt-5">
+      <div class="cards-new-form justify-content-between">
+        <% @bookings.each do |booking| %>
+          <%= render "booking", booking: booking %>
+          <% end %>
+      </div>
+    </div>
   </div>
-  <% end %>
-</div>
-</div>
-
-<div class="d-flex justify-content-center align-items-center">
-    <%= link_to "Voir les mouettes", root_path, class: "btn btn-info btn-lg my-3 col-2" %>
 </div>

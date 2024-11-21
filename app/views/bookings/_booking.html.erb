@@ -9,33 +9,71 @@
   <% status_color = "info" %>
 <% end %>
 
-<div class="card" style="width: 20rem;">
-  <%= cl_image_tag booking.mouette.photo.key, height: 300, crop: :fill, class:"w-100" %>
-  <div class="card-body">
-    <h5 class="card-title">
+<div class="card-booking rounded-4">
+  <div class="card-img-top rounded-top-4"
+    style="background-image: url('<%= cl_image_path booking.mouette.photo.key, crop: :fill %>')">
+    <span class="booking-status-bagde badge rounded-pill text-bg-<%= status_color %>">
+        Location <%= status_printable %>
+    </span>
+  </div>
+  <div class="card-body p-2">
+    <h5 class="card-title font-card-mouette p-2">
       <%= booking.mouette.name %>
     </h5>
-    <p class="card-text">
-      Location <%= I18n.l(booking.start_date, format: "%D %B %Y%") %>
+    <div class="p-2 border-bottom">
+      <p class="card-text mb-1">
+        <% if params[:action] == "owner_bookings" %>
+          <strong>Votre mouette est demandée :</strong>
+        <% else %>
+          <strong>Vous demandez la mouette :</strong>
+        <% end %>
+      </p>
+      <p class="card-text mb-1">
+        du <%= I18n.l(booking.start_date, format: "%d %B %Y") %>
+      </p>
+      <p class="card-text mb-1">
+        au <%= I18n.l(booking.end_date, format: "%d %B %Y") %>
+      </p>
+    </div>
+    <div class="p-2">
+      <p class="card-text mb-1">
+        <% if params[:action] == "owner_bookings" %>
+          <p><strong>Locataire</strong></p>
+        <% else %>
+          <p class="border-bottom"><strong>Propriétaire</strong></p>
+        <% end %>
+      </p>
+      <p class="card-text mb-1">
+        <% if params[:action] == "owner_bookings" %>
+          <%= booking.renter.first_name %> <%= booking.renter.last_name %>
+        <% else %>
+          <%= booking.mouette.owner.first_name %> <%= booking.mouette.owner.last_name %>
+        <% end %>
+      </p>
+    </div>
+  </div>
+  <% if params[:action] == "owner_bookings" %>
+  <% if booking.pending? %>
+    <div class="card-buttons p-2 d-flex flex-row justify-content-center space-between">
+      <div class="p-1">
+      <%= link_to "Accepter",
+        accept_booking_path(booking),
+        data: { turbo_method: :patch,
+        turbo_confirm: "Êtes-vous sûrs d'accepter cette location ?"},
+        class: "btn rounded btn-success btn-sm mb-1 py-2 px-3" %>
+      </div>
+      <div class="p-1">
+      <%= link_to "Refuser",
+        reject_booking_path(booking),
+        data: { turbo_method: :patch,
+        turbo_confirm: "Êtes-vous sûr de refuser cette location ?"},
+        class: "btn rounded btn-danger btn-sm mb-1 py-2 px-3" %>
+      </div>
+    </div>
+  <% else %>
+    <p class="card-text border-top mb-1 p-4 text-secondary">
+        Location à venir dans <%= (booking.start_date - Date.today).to_i %> jours
     </p>
-  </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <span class="badge rounded-pill text-bg-<%= status_color %>">
-        Location <%= status_printable %>
-      </span>
-    </li>
-  </ul>
-  <div class="card-body">
-    <%= link_to "Accept",
-      accept_booking_path(booking),
-      data: { turbo_method: :patch,
-      turbo_confirm: "Êtes-vous sûrs d'accepter cette location ?"},
-      class: "btn rounded btn-success btn-sm mb-1" %>
-    <%= link_to "Reject",
-      reject_booking_path(booking),
-      data: { turbo_method: :patch,
-      turbo_confirm: "Êtes-vous sûr de refuser cette location ?"},
-      class: "btn rounded btn-danger btn-sm mb-1" %>
-  </div>
+  <% end %>
+  <% end %>
 </div>
