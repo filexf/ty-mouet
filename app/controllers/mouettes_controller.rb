@@ -5,6 +5,9 @@ class MouettesController < ApplicationController
 
   def index
     @mouettes = Mouette.all
+    if params[:query].present?
+      @mouettes = @mouettes.search_by_name_and_category(params[:query])
+    end
     @markers = @mouettes.geocoded.map do |mouette|
       {
         lat: mouette.latitude,
@@ -12,7 +15,6 @@ class MouettesController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {mouette: mouette}),
         marker_html: render_to_string(partial: "marker", locals: {mouette: mouette})
       }
-    end
   end
 
   def show
@@ -55,7 +57,8 @@ class MouettesController < ApplicationController
       :accessories,
       :description,
       :price,
-      :photo
+      :photo,
+      :category
     )
   end
 end
