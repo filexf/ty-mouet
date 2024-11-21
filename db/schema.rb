@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_113049) do
     t.bigint "owner_id"
     t.string "photo"
     t.string "category"
+    t.string "address"
     t.index ["owner_id"], name: "index_mouettes_on_owner_id"
   end
 

@@ -1,31 +1,4 @@
 <div class="container d-flex flex-column mb-6">
-
   <h1 class="my-5 d-flex justify-content-center"> <strong >Créez votre nouvelle mouette </strong> </h1>
-
-
-
-    <%= simple_form_for @mouette do |f| %>
-      <div class="cards-new-form ">
-
-        <%= f.input :name, required: true %>
-        <%= f.input :availability, collection: Mouette::AVAILABILITY %>
-        <%# <%= f.input :rating %>
-        <%# <%= f.input :latitude %>
-        <%# <%= f.input :longitude %>
-        <%= f.input :accessories, collection: Mouette::ACCESSORIES %>
-        <%= f.input :category, collection: Mouette::CATEGORIES %>
-        <%= f.input :price %>
-        <%= f.input :description %>
-        <%= f.input :photo, as: :file %>
-        <div class="d-flex justify-content-center mt-2">
-
-          <%= f.button :submit, class: "btn btn-outline-primary d-flex justify-content-center align-items-center m-4 col-6" %>
-        </div>
-      </div>
-
-
-    <% end %>
-
-
-
+  <%= render "form", mouette: @mouette %>
 </div>

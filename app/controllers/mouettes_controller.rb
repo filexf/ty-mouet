@@ -8,6 +8,13 @@ class MouettesController < ApplicationController
     if params[:query].present?
       @mouettes = @mouettes.search_by_name_and_category(params[:query])
     end
+    @markers = @mouettes.geocoded.map do |mouette|
+      {
+        lat: mouette.latitude,
+        lng: mouette.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {mouette: mouette}),
+        marker_html: render_to_string(partial: "marker", locals: {mouette: mouette})
+      }
   end
 
   def show
@@ -46,8 +53,7 @@ class MouettesController < ApplicationController
       :name,
       :availability,
       :rating,
-      :latitude,
-      :longitude,
+      :address,
       :accessories,
       :description,
       :price,
