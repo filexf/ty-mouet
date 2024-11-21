@@ -1,20 +1,45 @@
-<div class="banner d-flex align-items-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1519929436393-fe843baf2cec?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
-  <div class="container">
+  <div class="d-flex justify-content-center align-items-center rounded">
+    <div class="shadow bg-white p-3 ms-3">
+<h1>Trouvez votre mouette grâce à Ty-Mouët' ! </h1>
+        <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Trouve ta mouette"
+            %>
+          <%= submit_tag "Bon vol", name: "", class: "btn btn-outline-primary" %>
+        <% end %>
+
+        <form action="" class="d-flex justify-content-around">
+          <div>
+          <label for="start">Date de début:</label>
+          <input type="date" id="start-wanted-date" name="trip-start" value= Date.today min="2024-11-20" max="2028-12-31" />
+          </div>
+          <div>
+          <label for="start">Date de fin:</label>
+          <input type="date" id="end-wanted-date" name="trip-start" value= Date.today min=Date.tomorrow max="2028-12-31" />
+          </div>
+        </form>
+
+  </div>
+
+  <div class="col-12 col-sm-9 d-flex justify-content-end">
+<div class="banner d-flex flex-column mb-3 align-items-center justify-content-center align-middle gap-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1519929436393-fe843baf2cec?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
     <div class="d-flex flex-column mb-3 align-items-center justify-content-center align-middle gap-3">
       <h1 class="fs-1 text">Ty-mouët</h1>
       <h1 class="fs-2 text">À chaque occasion sa mouette</h1>
-      <p class="fs-3 text">Proposez votre mouette ou trouver les meilleures mouettes à proximité </p>
+      <p class="fs-4 text">Proposez votre mouette ou trouver les meilleures mouettes à proximité </p>
       <div class="d-flex flex-row">
         <%= link_to "Ajoutez une mouette", new_mouette_path, class: "btn btn-outline-light rounded p-3 me-3 fs-5 text" %>
         <a class="btn btn-outline-light rounded p-3 fs-5 text" href="#index-title">Voir les mouettes</a>
       </div>
     </div>
   </div>
+  </div>
 </div>
 
 
-
-
+<div class="container mt-3">
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
@@ -65,4 +90,5 @@
 
 <div class="d-flex justify-content-center align-items-center">
     <%= link_to "Ajoutez une mouette", new_mouette_path, class: "btn btn-info btn-lg my-3 col-2" %>
+</div>
 </div>
