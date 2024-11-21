@@ -4,11 +4,12 @@ class Mouette < ApplicationRecord
   has_many :bookings
   has_one_attached :photo
 
-  ACCESSORIES = ["casque", "slip", "chaussures"]
+  ACCESSORIES = ["casque", "slip", "chaussures", "noeud papillon"]
   AVAILABILITY = ["✅ Available ", "❌ Not available "]
+  CATEGORIES = ["Combattante", "Sprinteuse", "Factrice", "Groupe de zikmouëts", "Top Modèle", "Conteuse d'histoires"]
 
 
-  validates :name, :availability, :price, :photo, :description, presence: true
+  validates :name, :availability, :price, :photo, :description, :category, presence: true
   # validates :name, :uniqueness: true { message: "Name already taken" }
 
 
@@ -20,6 +21,11 @@ class Mouette < ApplicationRecord
   validates :accessories, inclusion: {
       in: ACCESSORIES,
       message: "Must select : #{ACCESSORIES}"
+  }
+
+  validates :category, inclusion: {
+    in: CATEGORIES,
+    message: "Must select : #{CATEGORIES}"
   }
 
   validates :price, numericality: { greater_than: 0, message: "must be a number greater than 0" }

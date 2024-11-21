@@ -9,10 +9,11 @@
 
         <%= f.input :name, required: true %>
         <%= f.input :availability, collection: Mouette::AVAILABILITY %>
-        <%= f.input :rating %>
-        <%= f.input :latitude %>
-        <%= f.input :longitude %>
+        <%# <%= f.input :rating %>
+        <%# <%= f.input :latitude %>
+        <%# <%= f.input :longitude %>
         <%= f.input :accessories, collection: Mouette::ACCESSORIES %>
+        <%= f.input :category, collection: Mouette::CATEGORIES %>
         <%= f.input :price %>
         <%= f.input :description %>
         <%= f.input :photo, as: :file %>
