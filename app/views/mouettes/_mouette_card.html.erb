@@ -13,7 +13,9 @@
         <div class="card-body pb-2">
 
           <div class="card-price-rating mx-4 mt-3">
-            <p class="ml-3"><em><%= mouette.rating %></em> ⭐️</p>
+            <% mouette.rating.round.times do %>
+                ⭐
+            <% end %>
             <p class="mr-3"><em><%=mouette.price%> €</em></p>
           </div>
 
