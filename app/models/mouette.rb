@@ -1,5 +1,9 @@
 class Mouette < ApplicationRecord
 
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
   belongs_to :owner, class_name: "User"
   has_many :bookings
   has_one_attached :photo
@@ -25,5 +29,5 @@ class Mouette < ApplicationRecord
   validates :price, numericality: { greater_than: 0, message: "must be a number greater than 0" }
 
   validates :description, length: { minimum: 10 }
-  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 0,less_than_or_equal_to: 5 }
+  # validates :rating, presence: true, numericality: { greater_than_or_equal_to: 0,less_than_or_equal_to: 5 }
 end
