@@ -15,6 +15,9 @@ module TyMouet
       generate.test_framework :test_unit, fixture: false
     end
 
+    #Set up locale to Frenche
+    config.i18n.default_locale = :fr
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
