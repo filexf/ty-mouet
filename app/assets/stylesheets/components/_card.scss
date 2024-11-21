@@ -18,30 +18,50 @@
 //   grid-template-columns: 1fr 1fr 1fr;
 //   grid-gap: 16px;
 // }
-.card{
-  border: none;
-}
 
-.card-body{
-  position: relative;
-}
 
-.card-price{
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-}
 
-.card-img-top{
-  width: 400px;
-  height: 250px;
-  object-fit: contain;
-}
-
+// La grille sur l'index de notre homepage
 .cards-new-form{
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+// La carte de la mouette sur les grilles
+.card-mouette{
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 1px;
+  border-radius: 1px;
+}
+
+// Le body de la card
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+
+// La partie afin de séparer le prix et le rating
+.card-price-rating{
+  display: flex;
+  justify-content: space-between;
+}
+
+// Afin de définir le ratio de l'image
+.card-img-top{
+  width: 300px;
+  height: 200px;
+  object-fit: contain;
+  display: flex;
+  justify-content: center;
+}
+
+.mouette-name{
+  font-size: large;
+}
+
+.card{
+  border: none;
 }
 
 .booking-infos p{

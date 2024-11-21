@@ -1,28 +1,28 @@
 <div class="d-flex justify-content-center align-items-center flex-column my-5 ">
 
-  <h1> <%= @mouette.name %> </h1>
+  <h1 class="mb-3"> <%= @mouette.name %> </h1>
   <p> <%= cl_image_tag @mouette.photo.key, height: 300, crop: :fill %> </p>
   <p> <%= @mouette.description %></p>
   <p> Disponibilités : <%= @mouette.availability %></p>
   <p> Cette mouette à une note de : <%= @mouette.rating %> ⭐️</p>
-  <button class="btn btn-secondary col-2 my-4"><%= link_to "Retour à la liste des mouettes", root_path, class: "text-decoration-none text-reset" %></button>
+  <button class="btn btn-secondary col-2 my-4"><%= link_to "Retour à la liste des mouettes", root_path, class: "text-decoration-none text-reset col-3" %></button>
 
 </div>
 
 <div class="container my-4">
 
   <% if current_user %>
-
     <% if current_user != @mouette.owner %>
       <h3 class= "d-flex justify-content-center my-6">Bookez votre mouette ici :</h3>
       <%= simple_form_for [@mouette, @booking], class: "d-flex flex-row" do |f| %>
         <%= f.input :start_date, as: :date  %>
         <%= f.input :end_date, as: :date %>
-        <div class="d-flex justify-content-center mt-4">
-          <%= f.button :submit, class:"btn btn-outline-warning d-flex text-align-center justify-content-center" %>
+        <div class="d-flex justify-content-center my-4">
+          <%= f.button :submit, class:"btn btn-outline-dark d-flex text-align-center justify-content-center" %>
         </div>
       <% end %>
     <% end %>
+
   <% else %>
 
     <div class="d-flex justify-content-center gap-3 m-2">
