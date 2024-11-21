@@ -1,0 +1,16 @@
+<%= simple_form_for @mouette do |f| %>
+  <div class="cards-new-form ">
+
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :opening_date,
+            as: :string,
+            input_html: { data: { controller: "datepicker" } } %>
+            
+    <div class="d-flex justify-content-center mt-2">
+
+      <%= f.button :submit, class: "btn btn-outline-primary d-flex justify-content-center align-items-center m-4 col-6" %>
+    </div>
+  </div>
+<% end %>
