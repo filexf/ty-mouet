@@ -31,5 +31,5 @@ class Mouette < ApplicationRecord
   validates :price, numericality: { greater_than: 0, message: "must be a number greater than 0" }
 
   validates :description, length: { minimum: 10 }
-  validates :rating, presence: true, numericality: { greater_than_or_equal_to: 0,less_than_or_equal_to: 5 }
+  # validates :rating, presence: true, numericality: { greater_than_or_equal_to: 0,less_than_or_equal_to: 5 }
 end

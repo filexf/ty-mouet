@@ -51,7 +51,8 @@ class MouettesController < ApplicationController
       :accessories,
       :description,
       :price,
-      :photo
+      :photo,
+      :category
     )
   end
 end
