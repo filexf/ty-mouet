@@ -5,6 +5,9 @@ class MouettesController < ApplicationController
 
   def index
     @mouettes = Mouette.all
+    if params[:query].present?
+      @mouettes = @mouettes.where(name: params[:query])
+    end
   end
 
   def show
