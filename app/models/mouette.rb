@@ -16,7 +16,7 @@ class Mouette < ApplicationRecord
     }
 
   ACCESSORIES = ["casque", "slip", "chaussures", "noeud papillon"]
-  AVAILABILITY = ["✅ Available ", "❌ Not available "]
+  AVAILABILITY = ["✅ Disponible", "❌ Pas disponible"]
   CATEGORIES = ["Combattante", "Sprinteuse", "Factrice", "Groupe de zikmouëts", "Top Modèle", "Conteuse d'histoires"]
 
   validates :name, :availability, :price, :photo, :description, :category, presence: true
