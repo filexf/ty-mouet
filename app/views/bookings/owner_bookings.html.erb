@@ -4,8 +4,30 @@
 <div class="d-flex justify-content-center align-items-center">
       <div class="row d-flex justify-content-around">
         <% @bookings.each do |booking| %>
-          
-        <% end %>
+          <div class="card col-12 col-sm-3 m-2">
+              <div class="card-img position-relative">
+                  <%= cl_image_tag booking.mouette.photo.key, height: 300, crop: :fill, class:"w-100" %>
+                  <div class="position-absolute bottom-0 start-0 w-100 d-flex justify-content-between p-2" style="background-color: rgba(0, 0, 0, 0.5);">
+                      <%= link_to "Accept", accept_booking_path(booking), data: { turbo_method: :patch, turbo_confirm: "really?"}, class: "btn btn-success btn-sm mb-1" %>
+                      <%= link_to "Reject", reject_booking_path(booking), data: { turbo_method: :patch, turbo_confirm: "really?"}, class: "btn btn-danger btn-sm mb-1" %>
+            </div>
+          </div>
+
+            <h5 class="card-title">
+              Mouette louée : <%= booking.mouette.name %>
+            </h5>
+            From: <%= booking.start_date %> to <%= booking.end_date %>
+            Renter: <%= booking.renter.first_name %> <%= booking.renter.last_name %>
+
+            <p>
+              <% if booking.rejected? %>
+                <h2 class="text-bg-danger text-center p-3 fs-3">Réservamouette rejetée</h2>
+                <% elsif booking.accepted? %>
+                <h2 class="text-bg-success p-3">Réservamouette acceptée</h2>
+                <% else %>
+                <h2 class="text-bg-info p-3">Réservamouette en attente</h2>
+              <% end %>
+              </p>
           </div>
     </div>
   </div>
