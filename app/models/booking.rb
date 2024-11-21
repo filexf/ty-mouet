@@ -8,8 +8,8 @@ class Booking < ApplicationRecord
   # end date after or equal to start date
   validates :end_date, comparison: { greater_than_or_equal_to: :start_date }
   # status in a list of statuses["pending","accepted","rejected"]
-  # validates :status, inclusion: {
-  #       # in: O..3,
-  #       message: 'Must select : ["pending","accepted","rejected","canceled"]'
-  #     }
+  validates :status, inclusion: {
+        in: ["pending","accepted","rejected","canceled"],
+        message: 'Must select : ["pending","accepted","rejected","canceled"]'
+      }
 end
