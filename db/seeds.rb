@@ -1,69 +1,49 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
-#
 require 'faker'
 require "open-uri"
 
 # 1. Clean the database 🗑️
 puts "Cleaning database..."
+Booking.destroy_all
 Mouette.destroy_all
 User.destroy_all
 
-# 2. Create the instances 🏗️
-puts "Creating users..."
-
-4.times do
-  User.create!(
-    first_name: Faker::Artist.name,
-    last_name: Faker::Coffee.blend_name,
-    email: Faker::Internet.email,
+# 2. Create the users
+puts "Creating users ..."
+User.create!(
+    last_name: "Orain",
+    email: "felix.orain@gmail.com",
     password: "password"
-  )
-  puts "Creating one user..."
-end
+)
+puts "Félix created"
 
-# 2. Create the instances 🏗️
-puts "Creating mouettes..."
+User.create!(
+    first_name: "Marion",
+    last_name: "Vives",
+    email: "mvives.dev@gmail.com",
+    password: "password"
+)
+puts "Marion created"
 
-mouettes_descriptions = [
-  "Une mouette blanche qui plane majestueusement dans le ciel bleu.",
-  "La mouette au bec jaune qui se pose souvent près de l'eau.",
-  "Une mouette curieuse observant les passants sur la plage.",
-  "Cette mouette agile vole au-dessus des vagues avec grande aisance.",
-  "La mouette en vol criant haut et fort, son cri résonnant dans l'air.",
-  "Une mouette solitaire posée sur un rocher, contemplant l'horizon.",
-  "Les mouettes virevoltantes dansent dans l'air au-dessus du rivage.",
-  "Une mouette bruyante qui cherche sa nourriture près des bateaux.",
-  "La mouette effrontée vole si près des gens qu'on peut presque la toucher.",
-  "Une mouette gracieuse qui survole l'océan sans jamais se poser.",
-  "La mouette qui plonge pour attraper un poisson, sa cible parfaitement visée.",
-  "Des mouettes bruyantes se regroupent sur la plage pour se reposer.",
-  "Une mouette solitaire qui observe les vagues s'écraser contre les rochers.",
-  "Les mouettes au cri perçant qui s'envolent dès qu'un nuage passe.",
-  "Une mouette errante qui semble se perdre dans l'immensité de l'océan.",
-  "La mouette qui vole à toute vitesse, défiant les courants marins.",
-  "Une mouette qui se pose tranquillement sur un mât de bateau.",
-  "La mouette qui scrute la mer à la recherche de petits poissons.",
-  "Une mouette sur un banc de sable, ses ailes ouvertes dans le vent.",
-  "Une mouette qui déploie ses ailes pour prendre de l'altitude.",
-  "Les mouettes qui se battent pour un morceau de pain jeté par un touriste.",
-  "Une mouette majestueuse survolant le port au crépuscule.",
-  "La mouette qui se perche sur une bouée en plein milieu de la mer.",
-  "Les mouettes qui suivent les bateaux en quête de restes de poissons.",
-  "Une mouette posée sur un quai, observant la mer avec calme.",
-  "Les mouettes qui migrent en groupe vers des endroits plus chauds.",
-  "Une mouette qui fait une pause sur le sable avant de reprendre son vol.",
-  "La mouette qui se bat contre le vent lors d'une tempête marine.",
-  "Les mouettes qui naviguent ensemble en suivant les vagues de l'océan.",
-  "Une mouette audacieuse qui vient chercher à manger dans un marché de poisson."
-]
+User.create!(
+    first_name: "Léo",
+    last_name: "Tremoureux",
+    email: "ltremoureux@hotmail.fr",
+    password: "password"
+)
+puts "Léo created"
+
+User.create!(
+    first_name: "Caro",
+    last_name: "Cerbelaud",
+    email: "caroline.cerbelaud@gmail.com",
+    password: "password"
+)
+puts "Caro created"
+
+puts "#{User.count} created"
+
+
+# 2. Create the mouettes
 
 mouettes_photos = [
   'premium_photo-1667099522599-6948e8559a4f_fmgmp4',
@@ -99,28 +79,364 @@ mouettes_photos = [
   'qqvrq6airlahpjpqkxsk'
 ]
 
-# cloudinary_url = "https://res.cloudinary.com/dpvtwxlxh/image/upload/qqvrq6airlahpjpqkxsk.jpg"
+mouettes_array = [
+    {
+        name: "Mouette Agile",
+        availability: "✅ Disponible",
+        accessories: "casque",
+        description: "Excellente mouette de combat, fourbe et agile",
+        photo: "",
+        address: "6 Rue de la Visitation, 35000 Rennes",
+        category: "Combattante"
+    },
+    {
+        name: "ShowMouette",
+        availability: "❌ Pas disponible",
+        accessories: "casque",
+        description: "Invaincue en 20 ans, cette mouette sait faire le show",
+        photo: "",
+        address: "1 Place Saint-Michel, 35500 Vitré",
+        category: "Combattante"
+    },
+    {
+        name: "MikeBecson",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "La MykeTyson de la mouette, des combats haut en couleurs à prévoir",
+        photo: "",
+        address: "18 Quai Duguay-Trouin, 35400 Saint-Malo",
+        category: "Combattante"
+    },
+    {
+        name: "SucreCroc",
+        availability: "✅ Disponible",
+        accessories: "casque",
+        description: "Les coups de griffe elle connaît : rangez gauffres et glaces, elle se battra pour sa dose de sucre",
+        photo: "",
+        address: "12 Rue de Dinan, 35120 Dol-de-Bretagne",
+        category: "Combattante"
+    },
+    {
+        name: "Pluminator",
+        availability: "✅ Disponible",
+        accessories: "casque",
+        description: "Star de la MMA (Mouette Martial Art) depuis 1995. On se souvient de ses combats longtemps",
+        photo: "",
+        address: "3 Place de l’Église, 35800 Dinard",
+        category: "Combattante"
+    },
+    {
+        name: "Migramouette",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Migration du nord au sud, elle en a vu du pays ! ",
+        photo: "",
+        address: "1 Rue Saint-Mathieu, 29200 Brest",
+        category: "Conteuse d'histoires"
+    },
+    {
+        name: "BzhWing",
+        availability: "❌ Pas disponible",
+        accessories: "slip",
+        description: "De Saint Malo à Brest, elle connaît les légendes bretonnes sur le bout des ails",
+        photo: "",
+        address: "4 Place de la Résistance, 29000 Quimper",
+        category: "Conteuse d'histoires"
+    },
+    {
+        name: "Cont’Ailes",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Idéale pour une journée à la plage, elle vous contera ses plus belles histoires",
+        photo: "",
+        address: "10 Quai de la Douane, 29600 Morlaix",
+        category: "Conteuse d'histoires"
+    },
+    {
+        name: "Gwelican",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Ses yeux perçants, encadrés d'un doux contour doré, racontent mille histoires du vent et de la mer.",
+        photo: "",
+        address: "7 Rue de l’Odet, 29900 Concarneau",
+        category: "Conteuse d'histoires"
+    },
+    {
+        name: "Carg’ailes",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Avec ses ailes robustes et son flair infaillible, elle défie vents et marées pour déposer vos colis avec une précision chirurgicale.",
+        photo: "",
+        address: "15 Rue de la Baie, 29770 Audierne",
+        category: "Factrice"
+    },
+    {
+        name: "StormExpress",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Capable de naviguer à travers les tempêtes, elle transporte lettres et paquets comme une pro des airs.",
+        photo: "",
+        address: "5 Rue Saint-Sauveur, 22100 Dinan",
+        category: "Factrice"
+    },
+    {
+        name: "BecPilote",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Son bec agile, son sac en bandoulière et son sens de l’orientation la rendent imbattable sur les circuits de livraison.",
+        photo: "",
+        address: "2 Place du Martray, 22220 Tréguier",
+        category: "Factrice"
+    },
+    {
+        name: "PointeTemps",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Toujours ponctuelle, elle respecte les délais avec un professionnalisme qui ferait pâlir les meilleurs services postaux.",
+        photo: "",
+        address: "9 Quai de la République, 22300 Lannion",
+        category: "Factrice"
+    },
+    {
+        name: "FlècheCourte",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Service abordable, mais attendez-vous à des fourches de livraison et non des fourchettes",
+        photo: "",
+        address: "8 Rue des Frères Courbet, 22400 Lamballe",
+        category: "Factrice"
+    },
+    {
+        name: "Gingle Mouette",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Avec leurs cris harmonisés sur des clochettes, ils amènent la magie de Noël",
+        photo: "Groupe_GingleMouet_bfcevr",
+        address: "10 Rue de la Plage, 22660 Trévou-Tréguignec",
+        category: "Groupe de zikmouëts"
+    },
+    {
+        name: "Moueticanos",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Ces volatiles, sombreros sur la tête, marient maracas et marées pour des concerts caliente",
+        photo: "Groupe_Moueticanos_ogqpa5",
+        address: "3 Place de la République, 56000 Vannes",
+        category: "Groupe de zikmouëts"
+    },
+    {
+        name: "Mouetmatah",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Inspirés par l’énergie brute du rock celtique, ces mouettes bretonnes déchaînent les foules avec leurs solos de bec et leurs refrains criards, dignes des tempêtes d’Armorique.",
+        photo: "Groupe_Mouetmatah_mi5jgp",
+        address: "4 Rue du Port, 56100 Lorient",
+        category: "Groupe de zikmouëts"
+    },
+    {
+        name: "Moumou&Co",
+        availability: "❌ Pas disponible",
+        accessories: "chaussures",
+        description: "La formation chill et jazzy de l’année. Ces mouettes coolos, saxophones et lunettes de soleil inclus, transforment chaque coucher de soleil en jam session inoubliable",
+        photo: "Groupe_Moumou_co_bxsmhz",
+        address: "9 Place du Marché, 56370 Sarzeau",
+        category: "Groupe de zikmouëts"
+    },
+    {
+        name: "Nique Ta Mouette",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Issus du Rap Français engagé, Nique ta Mouette promets des textes forts et rythmés",
+        photo: "Groupe_Niquetamouette_asort1",
+        address: "6 Quai des Voiliers, 56400 Auray",
+        category: "Groupe de zikmouëts"
+    },
+    {
+        name: "Albatreizh",
+        availability: "❌ Pas disponible",
+        accessories: "casque",
+        description: "12min58 au 100km, une vraie sprinteuse",
+        photo: "",
+        address: "12 Rue Saint-Michel, 56340 Carnac",
+        category: "Sprinteuse"
+    },
+    {
+        name: "Mouette express",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Plus rapide qu'Hussein Bolt, un vrai bolide",
+        photo: "",
+        address: "Pointe du Raz, 29770 Plogoff",
+        category: "Sprinteuse"
+    },
+    {
+        name: "Mouettemarher",
+        availability: "✅ Disponible",
+        accessories: "casque",
+        description: "Sur le circuit de Mouette 1 depuis 10 ans, elle a roulé sa bosse",
+        photo: "",
+        address: "Fort La Latte, 22240 Plévenon",
+        category: "Sprinteuse"
+    },
+    {
+        name: "Superson’ailes",
+        availability: "✅ Disponible",
+        accessories: "casque",
+        description: "Elle vole plus vite que le concorde et pollue moins",
+        photo: "",
+        address: "Phare d’Eckmühl, 29760 Penmarc’h",
+        category: "Sprinteuse"
+    },
+    {
+        name: "SpeedWing",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Plus vite que la musique, elle gagne toutes ses courses. ",
+        photo: "",
+        address: "Château de Fougères, 35300 Fougères",
+        category: "Sprinteuse"
+    },
+    {
+        name: "Mouette à l'ouest",
+        availability: "✅ Disponible",
+        accessories: "slip",
+        description: "Sait voler, mais a des difficultés d'orientation, à utiliser en circuit fermé",
+        photo: "",
+        address: "Port de Camaret, 29570 Camaret-sur-Mer",
+        category: "Sprinteuse"
+    },
+    {
+        name: "OldieBird",
+        availability: "✅ Disponible",
+        accessories: "noeud papillon",
+        description: "Mouette qui a perdu de sa superbe mais qui reste agréable à regarder",
+        photo: "",
+        address: "2 Rue de l’Église, 35470 Bain-de-Bretagne",
+        category: "Top Modèle"
+    },
+    {
+        name: "FluffySky",
+        availability: "✅ Disponible",
+        accessories: "noeud papillon",
+        description: "Très jolie mouette, plumage fourni",
+        photo: "",
+        address: "5 Place de la Mairie, 22810 Belle-Isle-en-Terre",
+        category: "Top Modèle"
+    },
+    {
+        name: "ArtMouette",
+        availability: "❌ Pas disponible",
+        accessories: "chaussures",
+        description: "La perfection de son plumage, digne d'une toile de maître, fait d'elle une muse naturelle et incontestée.",
+        photo: "",
+        address: "46 allée des Tilleuls, 35220 Chateaubourg",
+        category: "Top Modèle"
+    },
+    {
+        name: "Margot",
+        availability: "✅ Disponible",
+        accessories: "noeud papillon",
+        description: "Son port altier et sa démarche gracieuse captivent tous les regards, que ce soit sur la plage ou en plein vol.",
+        photo: "",
+        address: "6 rue Emile L'Hote, 35400 Saint-Malo",
+        category: "Top Modèle"
+    },
+    {
+        name: "Gwélican",
+        availability: "❌ Pas disponible",
+        accessories: "chaussures",
+        description: "Avec ses plumes d'un blanc nacré et ses reflets argentés, il brille comme une étoile filante dans le ciel.",
+        photo: "",
+        address: "25 boulevard Marboeuf, 35000 Rennes",
+        category: "Top Modèle"
+    }
+]
 
 
-30.times do |index|
-  mouette = Mouette.new(
-    name: Faker::Creature::Bird.implausible_common_name,
-    availability: "available",
+mouettes_array.each_with_index do |mouette, index|
+  new_mouette = Mouette.new(
+    name: mouette[:name],
+    availability: mouette[:availability],
     rating: rand(0..5),
-    latitude: 48.083328,
-    longitude: -1.68333,
-    accessories: ["casque", "slip", "veste en cuir", "noeud papillon"].sample,
-    description: mouettes_descriptions[index],
+    address: mouette[:address],
+    category: mouette[:category],
+    accessories: mouette[:accessories],
+    description: mouette[:description],
     price: rand(20..100),
-    owner: User.all[rand(0..3)]
+    owner: User.all.sample
   )
-  cloudinary_url = "https://res.cloudinary.com/#{ENV["CLOUDINARY_CLOUD_NAME"]}/image/upload/#{mouettes_photos[index]}.jpg"
-  file = URI.parse(cloudinary_url).open
-  mouette.photo.attach(io: file, filename: "#{mouette.name}.png", content_type: "image/png")
-  mouette.save!
+  if mouette[:photo].blank?
+    cloudinary_url = "https://res.cloudinary.com/#{ENV["CLOUDINARY_CLOUD_NAME"]}/image/upload/#{mouettes_photos[index]}.jpg"
+    file = URI.parse(cloudinary_url).open
+    new_mouette.photo.attach(io: file, filename: "#{new_mouette.name}.png", content_type: "image/png")
+  else
+    cloudinary_url = "https://res.cloudinary.com/#{ENV["CLOUDINARY_CLOUD_NAME"]}/image/upload/#{mouette[:photo]}.jpg"
+    file = URI.parse(cloudinary_url).open
+    new_mouette.photo.attach(io: file, filename: "#{new_mouette.name}.png", content_type: "image/png")
+  end
 
-  puts "creating one mouette"
+  new_mouette.save!
+
 end
 
 # 3. Display a message 🎉
 puts "Finished! Created #{Mouette.count} mouettes and #{User.count} users."
+
+
+# OLD SEED MOUETTE
+
+# mouettes_descriptions = [
+#   "Une mouette blanche qui plane majestueusement dans le ciel bleu.",
+#   "La mouette au bec jaune qui se pose souvent près de l'eau.",
+#   "Une mouette curieuse observant les passants sur la plage.",
+#   "Cette mouette agile vole au-dessus des vagues avec grande aisance.",
+#   "La mouette en vol criant haut et fort, son cri résonnant dans l'air.",
+#   "Une mouette solitaire posée sur un rocher, contemplant l'horizon.",
+#   "Les mouettes virevoltantes dansent dans l'air au-dessus du rivage.",
+#   "Une mouette bruyante qui cherche sa nourriture près des bateaux.",
+#   "La mouette effrontée vole si près des gens qu'on peut presque la toucher.",
+#   "Une mouette gracieuse qui survole l'océan sans jamais se poser.",
+#   "La mouette qui plonge pour attraper un poisson, sa cible parfaitement visée.",
+#   "Des mouettes bruyantes se regroupent sur la plage pour se reposer.",
+#   "Une mouette solitaire qui observe les vagues s'écraser contre les rochers.",
+#   "Les mouettes au cri perçant qui s'envolent dès qu'un nuage passe.",
+#   "Une mouette errante qui semble se perdre dans l'immensité de l'océan.",
+#   "La mouette qui vole à toute vitesse, défiant les courants marins.",
+#   "Une mouette qui se pose tranquillement sur un mât de bateau.",
+#   "La mouette qui scrute la mer à la recherche de petits poissons.",
+#   "Une mouette sur un banc de sable, ses ailes ouvertes dans le vent.",
+#   "Une mouette qui déploie ses ailes pour prendre de l'altitude.",
+#   "Les mouettes qui se battent pour un morceau de pain jeté par un touriste.",
+#   "Une mouette majestueuse survolant le port au crépuscule.",
+#   "La mouette qui se perche sur une bouée en plein milieu de la mer.",
+#   "Les mouettes qui suivent les bateaux en quête de restes de poissons.",
+#   "Une mouette posée sur un quai, observant la mer avec calme.",
+#   "Les mouettes qui migrent en groupe vers des endroits plus chauds.",
+#   "Une mouette qui fait une pause sur le sable avant de reprendre son vol.",
+#   "La mouette qui se bat contre le vent lors d'une tempête marine.",
+#   "Les mouettes qui naviguent ensemble en suivant les vagues de l'océan.",
+#   "Une mouette audacieuse qui vient chercher à manger dans un marché de poisson."
+# ]
+
+# cloudinary_url = "https://res.cloudinary.com/dpvtwxlxh/image/upload/qqvrq6airlahpjpqkxsk.jpg"
+
+
+# 30.times do |index|
+#   mouette = Mouette.new(
+#     name: Faker::Creature::Bird.implausible_common_name,
+#     availability: "✅ Disponible",
+#     rating: rand(0..5),
+#     latitude: 48.083328,
+#     longitude: -1.68333,
+#     accessories: ["casque", "slip", "veste en cuir", "noeud papillon"].sample,
+#     description: mouettes_descriptions[index],
+#     price: rand(20..100),
+#     owner: User.all[rand(0..3)]
+#   )
+#   cloudinary_url = "https://res.cloudinary.com/#{ENV["CLOUDINARY_CLOUD_NAME"]}/image/upload/#{mouettes_photos[index]}.jpg"
+#   file = URI.parse(cloudinary_url).open
+#   mouette.photo.attach(io: file, filename: "#{mouette.name}.png", content_type: "image/png")
+#   mouette.save!
+
+#   puts "creating one mouette"
+# end
