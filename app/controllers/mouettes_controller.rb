@@ -6,7 +6,7 @@ class MouettesController < ApplicationController
   def index
     @mouettes = Mouette.all
     if params[:query].present?
-      @mouettes = @mouettes.where(name: params[:query])
+      @mouettes = @mouettes.search_by_name_and_category(params[:query])
     end
   end
 
