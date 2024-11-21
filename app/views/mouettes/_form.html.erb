@@ -11,6 +11,7 @@
       wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
     %>
     <%= f.input :accessories, collection: Mouette::ACCESSORIES %>
+    <%= f.input :category, collection: Mouette::CATEGORIES %>
     <%= f.input :price %>
     <%= f.input :description %>
     <%= f.input :photo, as: :file %>
