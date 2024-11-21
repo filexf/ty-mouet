@@ -1,2 +1,4 @@
-<h2><%= mouette.name %></h2>
-<p><%= mouette.address %></p>
+<%= link_to mouette_path(mouette), class: "mouette-name text-decoration-none text-reset" do %>
+  <h2><%= mouette.name %></h2>
+  <p><%= mouette.address %></p>
+<% end  %>
