@@ -5,6 +5,14 @@ class MouettesController < ApplicationController
 
   def index
     @mouettes = Mouette.all
+    @markers = @mouettes.geocoded.map do |mouette|
+      {
+        lat: mouette.latitude,
+        lng: mouette.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {mouette: mouette}),
+        marker_html: render_to_string(partial: "marker", locals: {mouette: mouette})
+      }
+    end
   end
 
   def show
@@ -43,8 +51,7 @@ class MouettesController < ApplicationController
       :name,
       :availability,
       :rating,
-      :latitude,
-      :longitude,
+      :address,
       :accessories,
       :description,
       :price,

@@ -1,0 +1,22 @@
+<%= simple_form_for @mouette do |f| %>
+  <div class="cards-new-form ">
+
+    <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+    <%= f.input :name, required: true %>
+    <%= f.input :availability, collection: Mouette::AVAILABILITY %>
+    <%= f.input :address,
+      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+    %>
+    <%= f.input :accessories, collection: Mouette::ACCESSORIES %>
+    <%= f.input :price %>
+    <%= f.input :description %>
+    <%= f.input :photo, as: :file %>
+    <div class="d-flex justify-content-center mt-2">
+
+      <%= f.button :submit, class: "btn btn-outline-primary d-flex justify-content-center align-items-center m-4 col-6" %>
+    </div>
+  </div>
+<% end %>
