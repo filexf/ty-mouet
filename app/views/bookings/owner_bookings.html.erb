@@ -20,7 +20,7 @@
             Renter: <%= booking.renter.first_name %> <%= booking.renter.last_name %>
 
             <p>
-              <% if booking.rejected?%>
+              <% if booking.rejected? %>
                 <h2 class="text-bg-danger text-center p-3 fs-3">Réservamouette rejetée</h2>
                 <% elsif booking.accepted? %>
                 <h2 class="text-bg-success p-3">Réservamouette acceptée</h2>
