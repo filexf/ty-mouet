@@ -11,3 +11,7 @@ input, label {
 .shadow {
   height: fit-content;
 }
+
+.shadow h1 {
+  font-family: parkinsans, sans-serif;
+}
