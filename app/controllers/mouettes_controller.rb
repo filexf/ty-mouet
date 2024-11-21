@@ -15,6 +15,7 @@ class MouettesController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {mouette: mouette}),
         marker_html: render_to_string(partial: "marker", locals: {mouette: mouette})
       }
+    end
   end
 
   def show
