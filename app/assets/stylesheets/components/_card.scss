@@ -25,14 +25,14 @@
 .cards-new-form{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 10px;
+  grid-gap: 30px;
 }
 
 // La carte de la mouette sur les grilles
 .card-mouette{
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 1px;
-  border-radius: 1px;
+  // padding: 1px;
+  // border-radius: 10px;
 }
 
 // Le body de la card
@@ -51,13 +51,18 @@
 .card-img-top{
   width: 300px;
   height: 200px;
-  object-fit: contain;
+  background-size: cover;
+  // object-fit: cover;
   display: flex;
   justify-content: center;
 }
 
 .mouette-name{
   font-size: large;
+}
+
+.font-card-mouette{
+  font-weight: 600;
 }
 
 .card{

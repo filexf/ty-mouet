@@ -1,9 +1,13 @@
 <div>
 
-      <div class="card-mouette p-3">
+    <%= link_to mouette_path(mouette), class: "mouette-name text-decoration-none text-reset" do %>
+      <div class="card-mouette rounded-4">
 
 
-          <img src="<%= cl_image_path mouette.photo.key, crop: :fill %>" alt="<%mouette.name%> the seagull" class="card-img-top">
+
+        <div class="card-img-top rounded-top-4"
+            style="background-image: url('<%= cl_image_path mouette.photo.key, crop: :fill %>')">
+        </div>
 
 
         <div class="card-body pb-2">
@@ -13,10 +17,11 @@
             <p class="mr-3"><em><%=mouette.price%> €</em></p>
           </div>
 
-          <h5 class="d-flex justify-content-center"><%= link_to mouette.name, mouette_path(mouette), class: "mouette-name text-decoration-none text-reset" %></h5>
+          <h5 class="d-flex justify-content-center font-card-mouette"> <%= mouette.name %></h5>
           <%# Hide availability until we manage it with dates properly %>
           <p class="card-text d-none"><small class="text-body-secondary"><%=mouette.availability%></small></p>
         </div>
 
       </div>
+      <% end %>
 </div>
