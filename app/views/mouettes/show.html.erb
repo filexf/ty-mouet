@@ -1,39 +1,43 @@
-<div class="d-flex justify-content-center align-items-center flex-column my-5 ">
+<div class="d-flex justify-content-center align-items-center flex-column mb-3 ">
+  <h1 class="mb-3 border-bottom"> <%= @mouette.name %> </h1>
 
-  <h1 class="mb-3"> <%= @mouette.name %> </h1>
-  <p> <%= cl_image_tag @mouette.photo.key, height: 300, crop: :fill %> </p>
-  <p> <%= @mouette.description %></p>
-  <p> Disponibilités : <%= @mouette.availability %></p>
-  <p> Cette mouette à une note de : <%= @mouette.rating %> ⭐️</p>
-  <button class="btn btn-secondary col-2 my-4"><%= link_to "Retour à la liste des mouettes", root_path, class: "text-decoration-none text-reset col-3" %></button>
-
-</div>
-
-<div class="container my-4">
-
-  <% if current_user %>
-    <% if current_user != @mouette.owner %>
-      <h3 class= "d-flex justify-content-center my-6">Bookez votre mouette ici :</h3>
-      <%= simple_form_for [@mouette, @booking], class: "d-flex flex-row" do |f| %>
-        <%= f.input :start_date, as: :date  %>
-        <%= f.input :end_date, as: :date %>
-        <div class="d-flex justify-content-center my-4">
-          <%= f.button :submit, "Réservez votre mouette", class:"btn btn-outline-primary d-flex text-align-center justify-content-center col-3 my-4" %>
-        </div>
-      <% end %>
-    <% end %>
-
-  <% else %>
-
-    <div class="d-flex justify-content-center gap-3 m-2">
-      <%= link_to new_user_session_path, class: "text-decoration-none text-reset" do %>
-        <button class="btn btn-success">Sign in</button>
-      <% end %>
-      <%= link_to new_user_registration_path, class: "text-decoration-none text-reset" do %>
-        <button class="btn btn-info">Sign up</button>
-      <% end %>
+  <div class="row d-flex align-items-center">
+    <div class="col m-4">
+      <p> <%= cl_image_tag @mouette.photo.key, height: 300, crop: :fill %> </p>
     </div>
 
-  <% end %>
+    <div class="col m-4 ">
+      <p> <%= @mouette.description %></p>
+      <p> Disponibilités : <%= @mouette.availability %></p>
+      <p> Cette mouette à une note de : <%= @mouette.rating %> ⭐️</p>
+    </div>
+  </div>
 
+  <div class="container my-2">
+    
+    <% if current_user != @mouette.owner %>
+      <form action="/mouettes/<%=@mouette.id%>/bookings" id="new_booking" method="post" class="d-flex">
+        <div class="row">
+
+          <label for="booking[start_date]">Date de début:</label>
+          <input type="date" id="start-wanted-date" name="booking[start_date]" value="<%=Date.today%>" min="2024-11-20" max="2028-12-31" />
+
+          <label for="booking[end_date]">Date de fin:</label>
+          <input type="date" id="end-wanted-date" name="booking[end_date]" value="<%=Date.today%>" min="2024-11-21" max="2028-12-31" />
+        </div>
+
+        <input type="submit" name="commit" class="btn btn-outline-primary" value="Bookez votre mouette" >
+
+      </form>
+    <% else %>
+      <div class="d-flex justify-content-center gap-3 m-2">
+        <%= link_to new_user_session_path, class: "text-decoration-none text-reset" do %>
+          <button class="btn btn-success">Sign in</button>
+        <% end %>
+        <%= link_to new_user_registration_path, class: "text-decoration-none text-reset" do %>
+          <button class="btn btn-info">Sign up</button>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
