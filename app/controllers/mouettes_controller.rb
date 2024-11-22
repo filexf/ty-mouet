@@ -6,7 +6,7 @@ class MouettesController < ApplicationController
   def index
     @mouettes = Mouette.all
     if params[:query].present?
-      @mouettes = @mouettes.search_by_name_and_category(params[:query])
+      @mouettes = @mouettes.search(params[:query])
     end
     @markers = @mouettes.geocoded.map do |mouette|
       {
