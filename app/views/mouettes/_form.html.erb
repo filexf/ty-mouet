@@ -1,25 +1,64 @@
 <%= simple_form_for @mouette do |f| %>
-  <div class="cards-new-form ">
-
+  <div>
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
-
-    <%= f.input :name, required: true %>
-    <%= f.input :availability, collection: Mouette::AVAILABILITY %>
-    <%= f.input :category, collection: Mouette::CATEGORIES %>
-    <div id="input-form">
-    <%= f.input :address,
-      input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-      wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-    %>
-    </div>
-    <%= f.input :accessories, collection: Mouette::ACCESSORIES %>
-    <%= f.input :price %>
-    <%= f.input :description %>
-    <%= f.input :photo, as: :file %>
-    <div class="d-flex justify-content-center mt-2">
-
-      <%= f.button :submit, class: "btn btn-outline-primary d-flex justify-content-center align-items-center m-4 col-6" %>
+    <div class="d-flex flex-column align-items-center">
+      <div class="d-flex flex-row justify-content-center align-items-baseline">
+        <div class="col-6 mx-1">
+          <%= f.input :name,
+          label: 'Le nom de votre mouette',
+          error: 'Merci de nommer votre mouette',
+          required: true %>
+        </div>
+        <div class="col-6 mx-1">
+          <%= f.input :accessories,
+          label: 'Accessoire',
+          error: 'Choisissez un accessoire',
+          collection: Mouette::ACCESSORIES %>
+        </div>
+        <div class="col-6 mx-1">
+          <%= f.input :price,
+          label: 'Prix journalier',
+          error: 'Définissez un prix journalier'
+           %>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-baseline gap-3">
+        <div class="col-12">
+          <%= f.input :category,
+          label: 'Catégorie',
+          error: 'Choisissez une catégorie',
+          collection: Mouette::CATEGORIES %>
+          </div>
+          <div class="col-12">
+            <%= f.input :description,
+          label: 'Description',
+          error: 'Décrivez votre mouette, ses capacités et avantages'
+           %>
+          </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center align-items-baseline gap-3">
+        <div class="col-9 me-1">
+          <div id="input-form">
+              <%= f.input :address,
+              label: 'Localisation de la mouette',
+              error: 'Veuillez préciser la localisation de la mouette',
+              input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+              wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+            %>
+            </div>
+          </div>
+          <div class="col-8">
+            <%= f.input :photo,
+            label: 'Photo',
+            error: 'Ajoutez une photo de votre mouette',
+            as: :file %>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center col-3">
+          <%= f.button :submit, "Publier", class: "btn btn-outline-dark d-flex justify-content-center align-items-center m-4 col-6" %>
+      </div>
+      </div>
     </div>
   </div>
 <% end %>
