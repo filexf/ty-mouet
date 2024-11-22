@@ -2,8 +2,8 @@
   background-size: cover;
   // background-position-x: right;
   // padding: 150px 0;
-  height: 100vh;
-  width: 70vw;
+  height: 90vh;
+  width: 80vw;
 }
 
 .banner h1 {
@@ -12,6 +12,10 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
   font-size: 32px;
   font-weight: bold;
+}
+
+.margin{
+  margin: 10px;
 }
 
 .banner p {

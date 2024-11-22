@@ -4,18 +4,24 @@
       <div class="card-mouette rounded-4">
 
 
-
         <div class="card-img-top rounded-top-4"
             style="background-image: url('<%= cl_image_path mouette.photo.key, crop: :fill %>')">
+        <span class="booking-status-bagde badge rounded-pill text-bg-info %>">
+        <%= mouette.category %>
+        </span>
         </div>
 
 
         <div class="card-body pb-2">
 
           <div class="card-price-rating mx-4 mt-3">
-            <%# Garder master, j'enlève chez moi parce que c'est pété %>
-            <p class="mr-3"><em><%=mouette.price%> €</em></p>
+          <% mouette.rating.round.times do %>
+              ⭐
+          <% end %>
+          <%# Garder master, j'enlève chez moi parce que c'est pété %>
+          <p class="mr-3"><em><%=mouette.price%> €</em></p>
           </div>
+
 
           <h5 class="d-flex justify-content-center font-card-mouette"> <%= mouette.name %></h5>
           <%# Hide availability until we manage it with dates properly %>
