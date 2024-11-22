@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_21_113049) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_22_130111) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,8 +56,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_21_113049) do
 
   create_table "mouettes", force: :cascade do |t|
     t.string "name"
-    t.string "availability"
-    t.float "rating"
+    t.string "availability", default: "✅ Disponible"
+    t.float "rating", default: 2.5
     t.float "latitude"
     t.float "longitude"
     t.string "accessories"
