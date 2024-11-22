@@ -18,11 +18,10 @@
             <li class="nav-item dropdown">
               <%= image_tag "https://thumbs.dreamstime.com/b/close-up-photo-screaming-white-seagull-black-background-291309691.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "Me déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown nav-link" %>
-                  <%= link_to "Mes annonces", owner_bookings_path(current_user), class: "dropdown nav-link" %>
-                  <%= link_to "Mes demandes", renter_bookings_path(current_user), class: "dropdown nav-link" %>
+                  <%= link_to "Me décomouetter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown nav-link" %>
+                  <%= link_to "Mes offres", owner_bookings_path(current_user), class: "dropdown nav-link" %>
+                  <%= link_to "Mes commandes", renter_bookings_path(current_user), class: "dropdown nav-link" %>
                 </div>
-
             </li>
           <% else %>
             <li class="nav-item active">

@@ -4,9 +4,11 @@
       <div class="card-mouette rounded-4">
 
 
-
         <div class="card-img-top rounded-top-4"
             style="background-image: url('<%= cl_image_path mouette.photo.key, crop: :fill %>')">
+        <span class="booking-status-bagde badge rounded-pill text-bg-info %>">
+        <%= mouette.category %>
+        </span>
         </div>
 
 
