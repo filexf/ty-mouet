@@ -10,7 +10,6 @@ class BookingsController < ApplicationController
     @booking.renter = current_user
     # à mettre à jour une fois Devise terminé
     @booking.mouette = @mouette
-
     if @booking.save
       redirect_to booking_path(@booking)
     else
