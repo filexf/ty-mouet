@@ -11,6 +11,7 @@ User.destroy_all
 puts "Creating users ..."
 User.create!(
     last_name: "Orain",
+    first_name: "Félix",
     email: "felix.orain@gmail.com",
     password: "password"
 )
@@ -102,7 +103,7 @@ mouettes_array = [
         name: "MikeBecson",
         availability: "✅ Disponible",
         accessories: "chaussures",
-        description: "La MykeTyson de la mouette, des combats haut en couleurs à prévoir",
+        description: "La MikeTyson de la mouette, des combats haut en couleurs à prévoir",
         photo: "",
         address: "18 Quai Duguay-Trouin, 35400 Saint-Malo",
         category: "Combattante"
@@ -207,7 +208,7 @@ mouettes_array = [
         category: "Factrice"
     },
     {
-        name: "Gingle Mouette",
+        name: "Jingle Mouette",
         availability: "✅ Disponible",
         accessories: "chaussures",
         description: "Avec leurs cris harmonisés sur des clochettes, ils amènent la magie de Noël",
@@ -270,7 +271,7 @@ mouettes_array = [
         category: "Sprinteuse"
     },
     {
-        name: "Mouettemarher",
+        name: "Mouettemarcher",
         availability: "✅ Disponible",
         accessories: "casque",
         description: "Sur le circuit de Mouette 1 depuis 10 ans, elle a roulé sa bosse",
@@ -347,8 +348,17 @@ mouettes_array = [
         accessories: "chaussures",
         description: "Avec ses plumes d'un blanc nacré et ses reflets argentés, il brille comme une étoile filante dans le ciel.",
         photo: "",
-        address: "25 boulevard Marboeuf, 35000 Rennes",
+        address: "25 boulevard Marbeuf, 35000 Rennes",
         category: "Top Modèle"
+    },
+    {
+        name: "Jérômouette",
+        availability: "✅ Disponible",
+        accessories: "chaussures",
+        description: "Passionnée, elle a plus d'une histoire à vous raconter !",
+        photo: "a_very_happy_seagull_with_a_blue_scarf_a_yellow_bike_helmet_and_octagonal_glasses_q0l9ph",
+        address: "78 mail François Mitterrand, 35000 Rennes",
+        category: "Conteuse d'histoires"
     }
 ]
 
@@ -357,7 +367,7 @@ mouettes_array.each_with_index do |mouette, index|
   new_mouette = Mouette.new(
     name: mouette[:name],
     availability: mouette[:availability],
-    rating: rand(0..5),
+    rating: rand(1..5),
     address: mouette[:address],
     category: mouette[:category],
     accessories: mouette[:accessories],
@@ -374,13 +384,45 @@ mouettes_array.each_with_index do |mouette, index|
     file = URI.parse(cloudinary_url).open
     new_mouette.photo.attach(io: file, filename: "#{new_mouette.name}.png", content_type: "image/png")
   end
-
+  puts "one mouette created"
   new_mouette.save!
 
 end
 
+
+#4. Create bookings for Demo
+
+#4.1 Bookings to owner Marion
+marion = User.where(last_name:"Vives").first
+felix = User.where(last_name:"Orain").first
+
+puts "Marion #{marion}"
+Mouette.where(category:"Groupe de zikmouëts").each do |mouette|
+  mouette.update(owner:marion)
+  day = rand(10..25)
+  month = rand(1..9)
+  Booking.create!(start_date:"#{day}/0#{month}/2025", end_date:"#{day}/0#{month}/2025", mouette:mouette, renter:felix)
+  puts "update #{mouette.name} with #{mouette.owner.last_name} owner"
+end
+
+# #4.2 Bookings with Marion as renter
+# devamouette = Mouette.create!(
+#         name: "Deva-mouette",
+#         availability: "✅ Disponible",
+#         accessories: "noeud papillon",
+#         description: "Ayant parcouru le monde entier à la recherche des plantes les plus fantastiques, elle a des récits de voyage à revendre",
+#         photo: "A_very_happy_seagull_with_a_backpack_earrings_and_a_beanie_working_in_a_botanical_garden_manipulating_plants_jr3v5f",
+#         address: "Place du parlement, 35000 Rennes",
+#         category: "Conteuse d'histoires")
+
+# cloudinary_url = "https://res.cloudinary.com/#{ENV["CLOUDINARY_CLOUD_NAME"]}/image/upload/#{devamouette[:photo]}.jpg"
+# file = URI.parse(cloudinary_url).open
+# devamouette.photo.attach(io: file, filename: "#{devamouette.name}.png", content_type: "image/png")
+# bookdeva = Booking.create!(start_date:"12/05/2025", end_date:"25/06/2025", mouette:devamouette, renter:marion)
+# puts "booking created #{bookdeva}"
+
 # 3. Display a message 🎉
-puts "Finished! Created #{Mouette.count} mouettes and #{User.count} users."
+puts "Finished! Created #{Mouette.count} mouettes and #{User.count} users and #{Booking.count} bookings"
 
 
 # OLD SEED MOUETTE
