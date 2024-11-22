@@ -35,6 +35,12 @@
   // border-radius: 10px;
 }
 
+// La carte du booking
+.card-booking{
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: min-content;
+}
+
 // Le body de la card
 .card-body{
   display: flex;
@@ -55,6 +61,7 @@
   // object-fit: cover;
   display: flex;
   justify-content: center;
+  position:relative;
 }
 
 .mouette-name{
@@ -72,6 +79,12 @@
 .booking-infos p{
   width: fit-content;
   height: fit-content;
+}
+
+.booking-status-bagde{
+  position: absolute;
+  top: 1em;
+  left: 1em;
 }
 
 // Smallest device
