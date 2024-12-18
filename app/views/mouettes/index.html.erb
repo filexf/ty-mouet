@@ -1,7 +1,7 @@
 
 <div class="d-flex justify-content-end align-items-center rounded position-relative m-0">
 
-  <div class="shadow bg-white col-4 py-5 px-3 ms-3 rounded-5 position-absolute start-0 ">
+  <div class="shadow bg-white col-4 py-5 px-3 ms-5 rounded-5 position-absolute start-0 ">
     <h1 class="d-flex justify-content-center text-center mb-4">Trouvez votre mouette grâce à <br>Ty-Mouët' ! </h1>
     <form action="" class="d-flex justify-content-around mb-5">
       <div>
@@ -19,7 +19,7 @@
             class: "form-control",
             placeholder: "Trouve ta mouette"
         %>
-      <%= submit_tag "Bon vol", name: "", class: "btn btn-outline-primary" %>
+      <%= submit_tag "Bon vol", name: "", class: "btn btn-outline-primary " %>
     <% end %>
   </div>
 
@@ -39,6 +39,9 @@
 </div>
 
 <div class="container mt-3">
+
+  <%# Carte  %>
+  
   <div class="rounded-5", style="width: 100%; height: 600px;"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
