@@ -2,24 +2,32 @@
   background-size: cover;
   // background-position-x: right;
   // padding: 150px 0;
-  height: 90vh;
-  width: 75vw;
+  // height: 90vh;
+  // width: 75vw;
 }
 
-.banner h1 {
+.banner-title h1 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  font-size: 32px;
+  // font-size: 3rem;
   font-weight: bold;
 }
 
-.margin{
-  margin: 10px;
-}
+// .banner-booking h1{
+//   margin: 0;
+//   color: black;
+//   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+//   font-size: 2rem;
+//   font-weight: bold;
+// }
 
-.banner p {
-  font-size: 20px;
+// .margin{
+//   margin: 10px;
+// }
+
+.banner-title p {
+  // font-size: 2rem;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
