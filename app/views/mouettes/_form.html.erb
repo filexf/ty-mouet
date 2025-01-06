@@ -3,42 +3,42 @@
     <%= f.error_notification %>
     <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
     <div class="d-flex flex-column align-items-center">
-      <div class="d-flex flex-row justify-content-center align-items-baseline">
-        <div class="col-6 mx-1">
+      <div class="d-flex flex-row justify-content-center align-items-baseline row row-cols-1 row-cols-sm-3">
+        <div class="">
           <%= f.input :name,
           label: 'Le nom de votre mouette',
           error: 'Merci de nommer votre mouette',
           required: true %>
         </div>
-        <div class="col-6 mx-1">
+        <div class="">
           <%= f.input :accessories,
           label: 'Accessoire',
           error: 'Choisissez un accessoire',
           collection: Mouette::ACCESSORIES %>
         </div>
-        <div class="col-6 mx-1">
+        <div class="">
           <%= f.input :price,
           label: 'Prix journalier',
           error: 'Définissez un prix journalier'
            %>
         </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-baseline gap-3">
-        <div class="col-12">
+      <div class="d-flex flex-row justify-content-center align-items-baseline row row-cols-1 row-cols-sm-2">
+        <div class="col">
           <%= f.input :category,
           label: 'Catégorie',
           error: 'Choisissez une catégorie',
           collection: Mouette::CATEGORIES %>
           </div>
-          <div class="col-12">
+          <div class="col">
             <%= f.input :description,
           label: 'Description',
           error: 'Décrivez votre mouette'
            %>
           </div>
       </div>
-      <div class="d-flex flex-row justify-content-center align-items-baseline gap-3">
-        <div class="col-9 me-1">
+      <div class="d-flex flex-row justify-content-center align-items-baseline row row-cols-1 row-cols-sm-2">
+        <div class="col ">
           <div id="input-form">
               <%= f.input :address,
               label: 'Localisation de la mouette',
@@ -48,7 +48,7 @@
             %>
             </div>
           </div>
-          <div class="col-8">
+          <div class="col ">
             <%= f.input :photo,
             label: 'Photo',
             error: 'Ajoutez une photo de votre mouette',
@@ -56,7 +56,7 @@
         </div>
       </div>
       <div class="d-flex flex-row justify-content-center col-3">
-          <%= f.button :submit, "Publier", class: "btn btn-outline-dark d-flex justify-content-center align-items-center m-4 col-6" %>
+          <%= f.button :submit, "Publier", class: "btn btn-outline-dark m-4 text-wrap" %>
       </div>
       </div>
     </div>
