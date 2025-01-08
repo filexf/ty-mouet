@@ -4,29 +4,29 @@
   </h1>
 
  <div class="d-flex mt-2 flex-column align-items-center">
-    <div class="d-flex flex-row align-items-top">
-      <div class="col-6 p-2">
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+      <div class="col">
         <div class="image_tag rounded img-thumbnail">
           <%=cl_image_tag @mouette.photo.key, class:"img-fluid"%>
         </div>
       </div>
-      <div class="col-6 ms-4 p-2 mb-3">
+      <div class="col">
             <p> <%= @mouette.description %></p>
       <p> Disponibilités : <%= @mouette.availability %></p>
       <p> Cette mouette à une note de : <%= @mouette.rating %> ⭐️</p>
 
       <% if current_user != @mouette.owner %>
-      <div class="col-10 mt-5 ms-5 py-3 px-2 rounded d-flex flex-column align-items-center justify-content-center">
+      <div class="col-10 mt-5 mx-2 py-3 px-2 rounded d-flex flex-column align-items-center justify-content-center">
 
         <form action="/mouettes/<%=@mouette.id%>/bookings" id="new_booking" method="post" class="d-flex">
           <div class="row">
-            <div class="col-sm-6 my-3 text-center">
+            <div class="col-sm-6 my-2 text-center">
 
             <label for="booking[start_date]"><strong>Date de début:</strong></label>
             <input type="date" id="start-wanted-date" name="booking[start_date]" value="<%=Date.today%>" min="2024-11-20" max="2028-12-31" />
 
             </div>
-            <div class="col-sm-6 my-3 text-center">
+            <div class="col-sm-6 my-2 text-center">
             <label for="booking[end_date]"> <strong> Date de fin:</strong></label>
             <input type="date" id="end-wanted-date" name="booking[end_date]" value="<%=Date.today%>" min="2024-11-21" max="2028-12-31" />
           </div>
