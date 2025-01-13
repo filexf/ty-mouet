@@ -61,3 +61,88 @@
 // .global-banner{
 //   position: relative;
 // }
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .banner img{
+    width: 83.33%;
+    height: 88vh;
+    object-fit: cover;
+    justify-content: end;
+  }
+  .banner-cadre-reservation{
+    width: 88%;
+    height: 50vh;
+    justify-content: center;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .banner img{
+    width: 83.33%;
+    height: 88vh;
+    object-fit: cover;
+    justify-content: end;
+  }
+  .banner-cadre-reservation{
+    width: 25%;
+    height: 50vh;
+    justify-content: start;
+    margin-left: 40px;
+  }
+  // .cards {
+  //   grid-template-columns: 1fr;
+  // }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .banner img{
+    width: 83.33%;
+    height: 88vh;
+    object-fit: cover;
+  }
+  .banner-cadre-reservation{
+    width: 25%;
+    height: 50vh;
+    justify-content: start;
+  }
+  // .cards {
+  //   grid-template-columns: 1fr 1fr;
+  // }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .banner img{
+    width: 83.33%;
+    height: 88vh;
+    object-fit: cover;
+  }
+  .banner-cadre-reservation{
+    width: 25%;
+    height: 50vh;
+    justify-content: start;
+  }
+  // .cards {
+  //   grid-template-columns: 1fr 1fr 1fr;
+  // }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .banner img{
+    width: 83.33%;
+    height: 88vh;
+    object-fit: cover;
+  }
+  .banner-cadre-reservation{
+    width: 25%;
+    height: 50vh;
+    justify-content: start;
+  }
+  // .cards {
+  //   grid-template-columns: 1fr 1fr 1fr;
+  // }
+}
