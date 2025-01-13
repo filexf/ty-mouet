@@ -38,3 +38,26 @@
 //   height: 100vh;
 //   object-fit: cover;
 // }
+
+.banner-cadre-photo{
+  z-index: 0;
+  position: absolute;
+  right: 0;
+  // height: 90vh;
+}
+
+.banner-cadre-reservation{
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  margin-top: 25vh;
+
+}
+
+.carte-map{
+  position: absolute;
+  top: 105vh;
+}
+// .global-banner{
+//   position: relative;
+// }
