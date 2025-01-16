@@ -1,12 +1,12 @@
 <div class="container d-flex flex-column justify-content-center space-between ">
   <h1 id="index-title" class="my-5 text-center"><strong>Vos demandes de mouettes</strong></h1>
   <div class="container">
-    <div class="d-flex justify-content-center align-items-center mt-5">
-      <div class="cards-new-form justify-content-between">
+    <div class="d-flex justify-content-center align-items-center mt-5 flex-wrap gap-3">
         <% @bookings.each do |booking| %>
-          <%= render "booking", booking: booking %>
-          <% end %>
+          <div class="cards-new-form col d-flex justify-content-center">
+            <%= render "booking", booking: booking %>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
