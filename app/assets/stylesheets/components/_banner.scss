@@ -65,8 +65,7 @@
 // // Smallest device
 // @media (min-width: 100px) and (max-width: 575px) {
 //   .banner img{
-//     width: 83.33%;
-//     height: 88vh;
+//     height: 70vh;
 //     object-fit: cover;
 //     justify-content: end;
 //   }
@@ -86,7 +85,9 @@
 @media (max-width: 575px) {
 
   .banner img{
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     justify-content: end;
   }
   .banner-cadre-reservation{
@@ -102,7 +103,9 @@
 @media (min-width: 576px) {
 
   .banner img{
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     justify-content: end;
   }
   .banner-cadre-reservation{
@@ -121,9 +124,12 @@
 @media (min-width: 768px) {
   .banner {
     width: 10%;
+    margin-left: -150px;
   }
   .banner img{
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .banner-cadre-reservation{
     z-index:2;
@@ -142,9 +148,12 @@
 @media (min-width: 992px) {
   .banner {
     width: 10%;
+    margin-left: -150px;
   }
   .banner img{
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .banner-cadre-reservation{
     z-index:2;
@@ -161,9 +170,12 @@
 @media (min-width: 1200px) {
   .banner {
     width: 10%;
+    margin-left: -150px;
   }
   .banner img{
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
   .banner-cadre-reservation{
     z-index:2;
