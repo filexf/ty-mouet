@@ -38,3 +38,152 @@
 //   height: 100vh;
 //   object-fit: cover;
 // }
+
+.banner-cadre-photo{
+  z-index: 0;
+  position: absolute;
+  right: 0;
+  // height: 90vh;
+}
+
+.banner-cadre-reservation{
+  z-index:2;
+  // z-index: 1;
+  // position: absolute;
+  // left: 0;
+  // margin-top: 25vh;
+}
+
+// .carte-map{
+//   position: absolute;
+//   top: 105vh;
+// }
+// .global-banner{
+//   position: relative;
+// }
+
+// // Smallest device
+// @media (min-width: 100px) and (max-width: 575px) {
+//   .banner img{
+//     height: 70vh;
+//     object-fit: cover;
+//     justify-content: end;
+//   }
+//   .banner-cadre-reservation{
+//     z-index:2;
+//     width: 100%;
+//     height: 50vh;
+//     justify-content: center;
+//   }
+
+//   #col{
+//     column-count: 1;
+//   }
+// }
+
+// Extra-small devices (portrait phones, less than 576px)
+@media (max-width: 575px) {
+
+  .banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    justify-content: end;
+  }
+  .banner-cadre-reservation{
+    z-index:2;
+    justify-content: center;
+  }
+  .global-banner {
+    flex-direction: column;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+
+  .banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    justify-content: end;
+  }
+  .banner-cadre-reservation{
+    z-index:2;
+    justify-content: start;
+    // margin-left: 40px;
+  }
+
+  .global-banner{
+    flex-direction: column;
+  }
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .banner {
+    width: 10%;
+    margin-left: -150px;
+  }
+  .banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .banner-cadre-reservation{
+    z-index:2;
+    max-width: 420px;
+    // height: 50vh;
+    justify-content: start;
+  }
+
+  .global-banner {
+    flex-direction: row-reverse;
+  }
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .banner {
+    width: 10%;
+    margin-left: -150px;
+  }
+  .banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .banner-cadre-reservation{
+    z-index:2;
+    max-width: 420px;
+    justify-content: start;
+  }
+
+  .global-banner {
+    flex-direction: row-reverse;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .banner {
+    width: 10%;
+    margin-left: -150px;
+  }
+  .banner img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .banner-cadre-reservation{
+    z-index:2;
+    max-width: 420px;
+    justify-content: start;
+  }
+
+  .global-banner {
+    flex-direction: row-reverse;
+  }
+}
