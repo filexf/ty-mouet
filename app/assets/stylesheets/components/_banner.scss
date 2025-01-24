@@ -1,10 +1,21 @@
-.banner {
+// .banner {
+//   background-size: cover;
+//   // background-position-x: right;
+//   // padding: 150px 0;
+//   // height: 90vh;
+//   // width: 75vw;
+// }
+
+
+.banner{
+  background-image: url(https://images.unsplash.com/photo-1519929436393-fe843baf2cec);
   background-size: cover;
-  // background-position-x: right;
-  // padding: 150px 0;
-  // height: 90vh;
-  // width: 75vw;
+  background-position: center;
+  height: 80vh;
+  min-height: 30vh;
+
 }
+
 
 .banner-title h1 {
   margin: 0;
@@ -82,36 +93,37 @@
 // }
 
 // Extra-small devices (portrait phones, less than 576px)
-@media (max-width: 575px) {
+@media (max-width: 575px){
 
-  .banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    justify-content: end;
+  .banner{
+    min-width: 100%;
   }
+
   .banner-cadre-reservation{
     z-index:2;
     justify-content: center;
+    width: 90vw;
+    padding: 0 1em;
+
   }
   .global-banner {
     flex-direction: column;
   }
 }
 
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
+// Small devices (landscape phones, entre 576px et 767px)
+@media (min-width: 576px) and (max-width:767px){
 
-  .banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    justify-content: end;
+  .banner{
+    min-width: 100%;
   }
+
   .banner-cadre-reservation{
     z-index:2;
     justify-content: start;
-    // margin-left: 40px;
+    width: 90vw;
+    padding: 0 1em;
+
   }
 
   .global-banner{
@@ -120,22 +132,24 @@
 
 }
 
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
+// Medium devices (tablets, entre 768px et 991px)
+@media (min-width: 768px) and (max-width:991px){
   .banner {
-    width: 10%;
-    margin-left: -150px;
+
+    position: sticky;
+    right: 0;
+    top: 5em;
   }
-  .banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+
   .banner-cadre-reservation{
     z-index:2;
+    min-width: 420px;
     max-width: 420px;
-    // height: 50vh;
     justify-content: start;
+    position: sticky;
+    left: 5em;
+    top: 3em;
+    padding: 0 1em;
   }
 
   .global-banner {
@@ -145,20 +159,23 @@
 }
 
 // Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
+@media (min-width: 992px) and (max-width:1199px){
   .banner {
-    width: 10%;
-    margin-left: -150px;
+
+    position: sticky;
+    right: 0;
+    top: 5em;
   }
-  .banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+
   .banner-cadre-reservation{
     z-index:2;
+    min-width: 420px;
     max-width: 420px;
     justify-content: start;
+    position: sticky;
+    left: 5em;
+    top: 3em;
+    padding: 0 1em;
   }
 
   .global-banner {
@@ -169,18 +186,21 @@
 // Extra large devices (large desktops, 1200px and up)
 @media (min-width: 1200px) {
   .banner {
-    width: 10%;
-    margin-left: -150px;
+
+    position: sticky;
+    right: 0;
+    top: 5em;
   }
-  .banner img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+
   .banner-cadre-reservation{
     z-index:2;
+    min-width: 420px;
     max-width: 420px;
     justify-content: start;
+    position: sticky;
+    left: 5em;
+    top: 3em;
+    padding: 0 1em;
   }
 
   .global-banner {
